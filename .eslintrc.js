@@ -15,24 +15,19 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "jsdoc"
     ],
     "rules": {
         //如果使用了react，请在rule里加上如下规则
         "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": "error",
         //去掉对缩进的警告，不然很烦人
-        "indent": [
-                      "off",
-                      "tab"
-                  ],
+        "indent": 0,
         //允许使用console, alert
         "no-console": 0,
         "no-alert": 0,
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
+        "linebreak-style": 0,
         "quotes": [
             "error",
             "single"
@@ -40,6 +35,19 @@ module.exports = {
         "semi": [
             "error",
             "always"
-        ]
+        ],
+
+        // eslint-pulgin-jsdoc
+        "jsdoc/check-param-names": 1,
+        "jsdoc/check-tag-names": 1,
+        "jsdoc/check-types": 1,
+        "jsdoc/newline-after-description": 1,
+        "jsdoc/require-description-complete-sentence": 0,
+        "jsdoc/require-hyphen-before-param-description": 1,
+        "jsdoc/require-param": 1,
+        "jsdoc/require-param-description": 1,
+        "jsdoc/require-param-type": 1,
+        "jsdoc/require-returns-description": 1,
+        "jsdoc/require-returns-type": 1
     }
 };

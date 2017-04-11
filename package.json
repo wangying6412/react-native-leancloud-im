@@ -4,20 +4,26 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "devtools": "react-devtools"
   },
   "dependencies": {
     "react": "16.0.0-alpha.6",
-    "react-native": "0.43.1",
+    "react-native": "^0.43.2",
     "react-navigation": "^1.0.0-beta.7",
-    "react-redux": "^5.0.3",
-    "redux-thunk": "^2.2.0",
-    "reselect": "^3.0.0"
+    "normalizr": "^3.2.2",
+    "reselect": "^3.0.0",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-jest": "19.0.0",
     "babel-preset-react-native": "1.9.1",
+    "eslint-plugin-jsdoc": "^3.0.0",
+    "gulp": "^3.9.1",
     "jest": "19.0.2",
+    "minami": "^1.1.1",
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "jest": {

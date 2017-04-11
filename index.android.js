@@ -5,30 +5,86 @@
  */
 
 import React, { Component } from 'react';
+
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
+    AppRegistry,
+    StyleSheet,
+    Text,
+    View,
+    Button,
 } from 'react-native';
 
-export default class reactNativeLeancloudIm extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
-  }
+import {
+    createStore,
+    applyMiddleware,
+    compose,
+} from 'redux';
+import thunk from 'redux-thunk';
+import {
+    connect,
+    Provider,
+} from 'react-redux';
+
+const initialState = {a:1,b:2,c:3};
+const reducer = (state=initialState,action)=>{
+    switch(action.type){
+        case 'RESET':
+            return initialState;
+        case 'ADD':
+            return Object.assign({},state,{a:state.a + 1});
+        case 'CUT':
+            return Object.assign({},state,{a:state.a - 1});
+        default:
+            return state;
+    }
+};
+
+const composeEnhancers =
+    typeof window === 'object' &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
+
+const store = createStore(reducer,composeEnhancers(
+    applyMiddleware(thunk)
+));
+
+class reactNativeLeancloudIm extends Component {
+
+    componentDidMount(){
+    }
+
+    _add(){
+        const action = { type : 'ADD' };
+        this.props.dispatch(action);
+        console.log('asdfasdfasdfasdfasdf');
+    }
+
+    _cut(){
+        const action = { type : 'CUT' };
+        this.props.dispatch(action);
+    }
+
+    _reset(){
+        const action = { type : 'RESET' };
+        this.props.dispatch(action);
+    }
+
+    render() {
+        return (
+            <View style={styles.container}>
+            <Text style={styles.welcome}>
+            {
+                this.props.a
+            }
+            </Text>
+            <View style={styles.row}>
+                <Button style={styles.btn} title="add" onPress={this._add.bind(this)} />
+                <Button style={styles.btn} title="cut" onPress={this._cut.bind(this)} />
+                <Button style={styles.btn} title="reset" onPress={this._reset.bind(this)} />
+            </View>
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
@@ -43,11 +99,28 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    btn : {
+        flex: 1,
+        marginRight : 10,
+    },
+    row : {
+        flexDirection : 'row',
+        justifyContent : 'center',
+    },
 });
 
-AppRegistry.registerComponent('reactNativeLeancloudIm', () => reactNativeLeancloudIm);
+const ReactNativeLeancloudIm = connect((state)=>{return {a:state.a};})(reactNativeLeancloudIm);
+
+class App extends React.Component{
+    render(){
+        return <Provider store={store}><ReactNativeLeancloudIm /></Provider>;
+    }
+}
+
+AppRegistry.registerComponent('reactNativeLeancloudIm', ()=>App);
+
+
+
+
+
+
