@@ -22,17 +22,11 @@ module.exports = {
         "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": "error",
         //去掉对缩进的警告，不然很烦人
-        "indent": [
-                      "off",
-                      "tab"
-                  ],
+        "indent": 0,
         //允许使用console, alert
         "no-console": 0,
         "no-alert": 0,
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
+        "linebreak-style": 0,
         "quotes": [
             "error",
             "single"
