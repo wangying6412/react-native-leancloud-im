@@ -10,7 +10,19 @@
 import Immutable from 'immutable';
 
 const $initialState = Immutable.fromJS({
-    status : 'init',
+    //是否正在获取数据
+    isFetching : false,
+    //是否正在刷新
+    isRefreshing : false,
+    //数据是否过期
+    didInvalidate : false,
+    //上次更新的时间
+    lastUpdated : null,
+    //已获取的页数
+    fetchedPageCount : null,
+    //下一页的url
+    nextPageUrl : null,
+    //内容
     items : []
 });
 const moduleName = '$name$'.toUpperCase();

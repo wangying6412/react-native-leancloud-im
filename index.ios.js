@@ -51,3 +51,12 @@ const styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('reactNativeLeancloudIm', () => reactNativeLeancloudIm);
+
+
+
+
+
+
+
+
+
