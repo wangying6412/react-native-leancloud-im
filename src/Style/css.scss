@@ -1,0 +1,25 @@
+
+$aaa : 1;
+
+.bbb {
+    width : $aaa;
+}
+
+.ccc {
+   @extend .bbb;
+}
+
+.ddd {
+    width : 80%;
+}
+
+//$custom : #{'$custom'};
+$custom : unquote('$custom + #{$aaa}');
+.eee:first-child {
+    border: 1px solid #000;
+    width : none;
+    height : $custom;
+    font-size: 1.5rem;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.6);
+}
+

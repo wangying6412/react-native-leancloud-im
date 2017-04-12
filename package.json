@@ -8,23 +8,31 @@
     "devtools": "react-devtools"
   },
   "dependencies": {
+    "normalizr": "^3.2.2",
     "react": "16.0.0-alpha.6",
     "react-native": "^0.43.2",
+    "react-native-extended-stylesheet": "^0.3.2",
     "react-navigation": "^1.0.0-beta.7",
-    "normalizr": "^3.2.2",
-    "reselect": "^3.0.0",
     "react-redux": "^5.0.4",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.0"
   },
   "devDependencies": {
     "babel-jest": "19.0.0",
     "babel-preset-react-native": "1.9.1",
+    "docdash": "^0.4.0",
     "eslint-plugin-jsdoc": "^3.0.0",
     "gulp": "^3.9.1",
+    "gulp-jsdoc3": "^1.0.1",
+    "gulp-react-native-stylesheet-css": "github:drivewealth/gulp-react-native-stylesheet-css",
+    "gulp-replace": "^0.5.4",
+    "gulp-sass": "^3.1.0",
+    "gulp-watch": "^4.3.11",
     "jest": "19.0.2",
     "minami": "^1.1.1",
-    "react-test-renderer": "16.0.0-alpha.6"
+    "react-test-renderer": "16.0.0-alpha.6",
+    "yargs": "^7.0.2"
   },
   "jest": {
     "preset": "react-native"

@@ -24,6 +24,14 @@ import {
     Provider,
 } from 'react-redux';
 
+import EStyleSheet from 'react-native-extended-stylesheet';
+import Style from './src/Style/css.js';
+EStyleSheet.build({
+  $custom: 100
+});
+const style = EStyleSheet.create(Style);
+
+console.log(style['_eee:first-child']);
 const initialState = {a:1,b:2,c:3};
 
 /**
