@@ -10,13 +10,14 @@ const gulp = require('gulp');
 
 const sass = require('gulp-sass');
 const reactNativeStylesheetCss = require('gulp-react-native-stylesheet-css');
-const watch = require('gulp-watch');
+//const watch = require('gulp-watch');
 const Path = require('path');
 const jsdoc = require('gulp-jsdoc3');
 const header = require('gulp-header');
 const args = require('yargs').argv;
 const fs = require('fs');
 const rename = require('gulp-rename');
+const replace = require('gulp-replace');
 
 gulp.task(
     'jsdoc',
@@ -67,7 +68,9 @@ gulp.task(
      * @function
      * @memberof external:tools
      * @example
+     *
      *      $ gulp createFile --name user.js --desc 用户模块 --cwd
+     *
      */
     ()=>{
 
@@ -101,10 +104,51 @@ gulp.task(
      * @name gulp createModule
      * @function
      * @memberof external:tools
-     * @todo -待编写
+     * @example
+     *
+     *      $ gulp createModule --name message --desc 消息模块 --cwd
+     *
      */
     ()=>{
 
+        if(!args.cwd)throw new Error('必须要 --cwd 参数。');
+        if(!args.name)throw new Error('没有发现模块名，操作失败。');
+
+        const template = Path.join(__dirname,'template/module/**/*.{js,json,scss,css}');
+        const modulename = args.name
+            .replace(/\s/g,'')
+            .replace(/[\-]\w?/g,(str)=>str[1]?str[1].toUpperCase():'');
+        const description = args.description || args.desc || '';
+        const moduledir = args.name;
+
+        if(fs.existsSync(Path.join('./',modulename))){
+            throw new Error(`模块${modulename}已存在，操作失败。`);
+        }else{
+            gulp.src(template)
+                .pipe(insertHeader(modulename,description))
+                .pipe(rename((path)=>{
+                    switch(path.basename){
+                        case 'index':
+                            path.basename = modulename;
+                            break;
+                        case 'package':
+                            break;
+                        default:
+                            path.basename = modulename + '.' + path.basename;
+                    }
+                }))
+                .pipe(replace(/\$(name|Name|NAME)\$/g,(str)=>{
+                    switch(str){
+                        case '$name$':
+                            return modulename;
+                        case '$NAME$':
+                            return modulename.toUpperCase();
+                        case '$Name$':
+                            return modulename.replace(/[a-z]/,(s)=>s.toUpperCase());
+                    }
+                }))
+                .pipe(gulp.dest(Path.join(process.cwd(),moduledir)));
+        }
     }
 );
 
@@ -124,30 +168,21 @@ function insertHeader(filename,description=''){
     pkg.filename = filename;
     pkg.description = description;
     pkg.basename = Path.parse(filename).name;
-    pkg.author = pkg.author ? pkg.author : 'none';
-    pkg.version = pkg.version ? pkg.version : 'none';
-    pkg.license = pkg.license ? pkg.license : 'none';
     let template = ['/**',
         ' * <%= pkg.description %>',
         ' *',
         ' * @file <%= pkg.filename %>',
-        ' * @author <%= pkg.author %>',
-        ' * @version v<%= pkg.version %>',
-        ' * @license <%= pkg.license %>',
         ' * @module <%= pkg.basename %>',
-        ' */',
-        ''
-    ].join('\n');
+    ];
+    pkg.authors && template.push(' * @author <%= pkg.authors %>');
+    pkg.version && template.push(' * @version v<%= pkg.version %>');
+    pkg.license && template.push(' * @license <%= pkg.license %>');
+    template = template.concat([' */','']).join('\n');
     return header(template, {
         pkg: pkg
     });
 }
 
-gulp.task('watch',()=>{
-    watch('./src/*.js', function(event) {
-        console.log(event);
-    });
-});
 
 
 

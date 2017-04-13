@@ -1,11 +1,3 @@
-/*
-
-    @name           $name$
-    @file           $name$.reducer.js
-    @author         $author$
-    @createAt       $createAt$
-
- */
 
 import Immutable from 'immutable';
 
@@ -25,14 +17,13 @@ const $initialState = Immutable.fromJS({
     //内容
     items : []
 });
-const moduleName = '$name$'.toUpperCase();
 
 export default ($state=$initialState,action={})=>{
     switch(action.type){
-        case `${moduleName}_INIT`:{
+        case '$NAME$_INIT':{
             return $initialState;
         }
-        case `${moduleName}_SAVE`:{
+        case '$NAME$_SAVE':{
             return $state.mergeDeep(action.payload);
         }
         default:

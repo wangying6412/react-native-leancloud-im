@@ -1,8 +1,7 @@
 /**
- * IM Example IOS 入口文件
+ * Example IOS 入口文件
  *
  * @file index.ios.js
- * @module index
  */
 
 import React, { Component } from 'react';
@@ -35,15 +34,6 @@ const style = EStyleSheet.create(Style);
 console.log(style['_eee:first-child']);
 const initialState = {a:1,b:2,c:3};
 
-/**
- * reducer
- *
- * @name reducer
- * @function
- * @param {Object} state - state
- * @param {Object} action - action
- * @returns {blank} none
- */
 const reducer = (state=initialState,action)=>{
     switch(action.type){
         case 'RESET':
