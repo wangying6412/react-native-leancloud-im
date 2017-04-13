@@ -1,7 +1,8 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
+ * IM Example IOS 入口文件
+ *
+ * @file index.ios.js
+ * @module index
  */
 
 import React, { Component } from 'react';
@@ -35,13 +36,13 @@ console.log(style['_eee:first-child']);
 const initialState = {a:1,b:2,c:3};
 
 /**
- * Aaa
+ * reducer
  *
  * @name reducer
  * @function
- * @param {Object} state -Ccc
- * @param {string} action -Eee
- * @returns {fff} Gggg
+ * @param {Object} state - state
+ * @param {Object} action - action
+ * @returns {blank} none
  */
 const reducer = (state=initialState,action)=>{
     switch(action.type){
