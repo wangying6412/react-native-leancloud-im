@@ -1,1 +1,0 @@
-module.exports = {"template":"/Users/lihaitang/Documents/im/reactNativeLeancloudIm/template","author":"lihaitang"};

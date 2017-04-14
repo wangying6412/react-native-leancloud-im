@@ -60,16 +60,16 @@ gulp.task(
 );
 
 gulp.task(
-    'createFile',
+    'file',
     /**
      * 构建js文件，自动添加头部注释及基本结构
      *
-     * @name gulp createFile
+     * @name gulp file
      * @function
      * @memberof external:tools
      * @example
      *
-     *      $ gulp createFile --name user.js --desc 用户模块 --cwd
+     *      $ gulp file --name user.js --desc 用户模块 --cwd
      *
      */
     ()=>{
@@ -91,22 +91,23 @@ gulp.task(
             gulp.src(template)
                 .pipe(insertHeader(filename,description))
                 .pipe(rename({basename}))
+                .pipe(replaceTemplate(basename,description))
                 .pipe(gulp.dest(process.cwd()));
         }
     }
 );
 
 gulp.task(
-    'createModule',
+    'module',
     /**
      * 构建模块，自动添加UI.js reducer.js __test__
      *
-     * @name gulp createModule
+     * @name gulp module
      * @function
      * @memberof external:tools
      * @example
      *
-     *      $ gulp createModule --name message --desc 消息模块 --cwd
+     *      $ gulp module --name message --desc 消息模块 --cwd
      *
      */
     ()=>{
@@ -137,20 +138,38 @@ gulp.task(
                             path.basename = modulename + '.' + path.basename;
                     }
                 }))
-                .pipe(replace(/\$(name|Name|NAME)\$/g,(str)=>{
-                    switch(str){
-                        case '$name$':
-                            return modulename;
-                        case '$NAME$':
-                            return modulename.toUpperCase();
-                        case '$Name$':
-                            return modulename.replace(/[a-z]/,(s)=>s.toUpperCase());
-                    }
-                }))
+                .pipe(replaceTemplate(modulename,description))
                 .pipe(gulp.dest(Path.join(process.cwd(),moduledir)));
         }
     }
 );
+
+/**
+ * 替换模板中的占位字符
+ *
+ * @name replaceTemplate
+ * @function
+ * @memberof external:tools
+ * @access protected
+ * @param {string} name - 文档名或者模块名，不带后缀
+ * @param {string} description - 文件描述（可选）
+ * @returns {Object} - 返回replace插件
+ */
+function replaceTemplate(name,description=''){
+    return replace(/\$(name|Name|NAME|desc|description)\$/g,(str)=>{
+        switch(str){
+            case '$name$':
+                return name;
+            case '$NAME$':
+                return name.toUpperCase();
+            case '$Name$':
+                return name.replace(/^[a-z]/,(s)=>s.toUpperCase());
+            case '$description$':
+            case '$desc$':
+                return description;
+        }
+    });
+}
 
 /**
  * 为JS文件插入头部
@@ -171,7 +190,6 @@ function insertHeader(filename,description=''){
     let template = ['/**',
         ' * <%= pkg.description %>',
         ' *',
-        ' * @file <%= pkg.filename %>',
         ' * @module <%= pkg.basename %>',
     ];
     pkg.authors && template.push(' * @author <%= pkg.authors %>');
