@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabBarIcon TabBarIcon的快照测试 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={false}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": undefined,
+        "fontSize": 26,
+      },
+      Object {},
+      Object {
+        "fontFamily": "Ionicons",
+        "fontStyle": "normal",
+        "fontWeight": "normal",
+      },
+    ]
+  }
+>
+  
+</Text>
+`;

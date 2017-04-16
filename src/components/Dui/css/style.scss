@@ -1,0 +1,1590 @@
+
+@import './base.scss';
+
+$headHeight : 64;
+$footHeight : js(screenHeight\*Number(0.07));
+$stateBarHeight : 20;
+
+.size {
+    headHeight : $headHeight;
+    footHeight : $footHeight;
+    stateBarHeight : $stateBarHeight;
+}
+
+$red : #de6e00;
+$blue : #00c3d9;
+$yellow : #f4c60e;
+$green : #1fd89c;
+$green_darken : #028985;
+$gray : #808080;
+
+$tabBarBackground : #333;
+$contentBackground : #f1f1f1;
+
+$space : 10px;
+$spaceMini : 5px;
+$spaceLegal : 20px;
+
+$onePx : js(onePx);
+
+//================================
+.red {
+    color: $red;
+}
+.blue {
+    color: $blue;
+}
+.gray {
+    color: $gray;
+}
+.yellow {
+    color: $yellow;
+}
+.green {
+    color: $green;
+}
+.greenDark {
+    color: $green_darken;
+}
+.white {
+    color: #FFF;
+}
+.black {
+    color: #000;
+}
+
+//================================
+.flex {
+    flex: 1;
+}
+.flex0 {
+    flex: 0;
+}
+.flex1 {
+    @extend .flex;
+}
+.flex2 {
+    flex: 2;
+}
+.flex3 {
+    flex: 3;
+}
+.column {
+    flex-direction: column;
+}
+.row {
+    flex-direction: row;
+}
+.center {
+    align-items: center;
+    justify-content: center;
+}
+.right {
+    align-items: flex-end;
+}
+.stretch {
+    align-items: stretch;
+}
+
+//===============================
+.bloder {
+    font-weight: bold;
+}
+.bold {
+    font-weight: bold;
+}
+
+//================================
+.space {
+    margin: $space;
+}
+.spaceMini {
+    margin: $spaceMini;
+}
+.spaceLegal {
+    margin: $spaceLegal;
+}
+
+//================================
+.font_mini {
+    font-size: 12px;
+}
+.font_legal {
+    font-size: 16px;
+}
+.breadAll {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+//=================================
+.contentBox {
+    margin-top: $headHeight;
+    _margin-bottom : $footHeight;
+    background-color: $contentBackground;
+}
+.container {
+    margin-top: $headHeight;
+    background-color: $contentBackground;
+}
+.containerBG {
+    background-color: $contentBackground;
+}
+.containerTransparent {
+    margin-top: $headHeight;
+}
+.containerIndex {
+    _margin-bottom : $footHeight \+ js($headHeight);
+    background-color: $contentBackground;
+}
+
+.containerHeight {
+    _height : js(screenHeight \- ($headHeight \+ js($footHeight)));
+}
+
+//===================================
+.navBar {
+    background-color: $red;
+    border-bottom-width: 0;
+}
+.navBarTitle {
+    color: #FFF;
+    font-weight: bold;
+}
+.navBarBottonIcon {
+    color: #FFF;
+    font-size: 24px;
+}
+.navBarBackface {
+    background-color: $red;
+    height: $headHeight;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+//===================================
+.scrollTabBar {
+    background-color: $red;
+}
+.scrollTabBar_alone {
+    padding-top: 20px;
+}
+.scrollTabBar_text {
+    color: #FFF;
+}
+.scrollTabBar_line {
+    background-color: #FFF;
+}
+.scrollTabBar_custom {
+    background-color: $red;
+    padding-top: $stateBarHeight;
+    height: $headHeight;
+}
+.scrollTabBar_sideBtn {
+    justify-content: center;
+    padding-left: $space;
+    padding-right: $space;
+}
+.scrollTabBar_tabs {
+    flex: 1.5
+}
+.scrollTabBar_active {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+//==================================
+.noLogin {
+    background-color: #e5e5e5;
+}
+.noLogin_image {
+    margin: $space {
+        top : $space*4;
+    };
+    flex: 1;
+}
+.noLogin_text {
+    margin-left: $space;
+    margin-right: $space;
+    color: $red;
+}
+
+//===================================
+.letterScrollWrap {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+//===================================
+.tabBar {
+    _height: $footHeight;
+    background-color: $tabBarBackground;
+    flex-direction: row;
+    align-items: center;
+}
+.tabBarSelected {
+    background-color: darken($tabBarBackground, 10%);
+}
+.tabItem {
+    flex: 1;
+    align-self: stretch;
+    @extend .center;
+}
+.tabItemIcon {
+    font-size: 26px;
+    text-align: center;
+    color: #FFF;
+    background-color: transparent;
+    margin-top: 3px;
+}
+.tabItemIconBadge {
+    position: absolute;
+    top: -5px;
+    right: -15px;
+    background-color: $red;
+    min-width: 20;
+    height: 20px;
+    border-radius: 10px;
+    padding: 0 3px;
+    @extend .center;
+}
+.tabItemIconBadge_text {
+    color: #FFF;
+    background-color: transparent;
+}
+.tabItemText {
+    text-align: center;
+    font-size: 12px;
+    color: #FFF;
+    backgroundColor: transparent;
+}
+.tabItemSelected {
+    color: $yellow;
+}
+
+//======================================
+.systemMessageTime {
+    background-color: $gray;
+    padding: 0 3px;
+    margin-top: $spaceLegal;
+    border-radius: 2px;
+    color: #FFF;
+}
+.systemMessageItem {
+    background-color: #FFF;
+    padding: $spaceMini;
+    border-radius: 3px;
+    margin: $spaceLegal {
+        top : $space;
+        bottom: 0;
+    }
+}
+
+
+//=======================================
+//    用户列表
+.girls_row {
+    flex-direction: row;
+    _margin-right: $onePx;
+}
+.girls_item {
+    flex: 1;
+    _margin-left: $onePx;
+    _margin-top: $onePx;
+    background-color:#FFF;
+}
+.girls_item_image {
+    _width: 100%;
+    _height: js(screenWidth\/2 \- $onePx);
+}
+.girls_img {
+    display: block;
+}
+.girls_text_wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+.girls_name {
+    //@extend .font_mini;
+    padding: $spaceMini;
+    color: #FFF;
+}
+.girls_sex {
+    color: $gray;
+    font-size: 18px;
+    padding-left: 10px;
+}
+.girls_info {
+    flex-direction: row;
+    padding: 0 $spaceMini {
+        bottom : $spaceMini;
+    };
+}
+.girls_skill {
+    flex: 1;
+    color: #FFF;
+    @extend .font_mini;
+    padding-right: $spaceMini;
+}
+.girls_price {
+    color: $gray;
+    @extend .font_mini;
+    align-self: flex-end;
+}
+
+//===============================
+//    用户中心
+.userCenter {}
+.userCenter_head {
+    flex-direction: column;
+}
+.userCenter_top {
+    flex-direction: row;
+    padding: 0 10px {
+        top : 25px;
+    }
+    background-color: rgba(255,255,255,0.1);
+}
+.userCenter_top_left {
+    font-size: 26px;
+    background-color: transparent;
+}
+.userCenter_top_right {
+    @extend .userCenter_top_left;
+    flex: 0;
+}
+.userCenter_avatarWrap {
+    flex-direction: row;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+.userCenter_avatar_outer {
+    width: 100px;
+}
+$avatarSize : 100px;
+.userCenter_avatar {
+    width: $avatarSize;
+    height: $avatarSize;
+    border-radius: 50px;
+}
+.userCenter_userName {
+    padding-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    background-color: transparent;
+}
+%userCenter_avatar_btn {
+    height: $avatarSize;
+    align-items: center;
+    justify-content: center;
+}
+.userCenter_avatar_btn_left {
+    @extend  %userCenter_avatar_btn;
+    margin-right: 20px;
+}
+.userCenter_avatar_btn_right {
+    @extend  %userCenter_avatar_btn;
+    margin-left: 20px;
+}
+
+.userCenter_flight_wrap {
+    padding: 10px;
+}
+.userCenter_flight_title {
+    border-bottom-width: 1px;
+    _border-bottom-width: $onePx;
+    border-color: #EEE;
+    padding: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.userCenter_flight_icon {
+    font-size: 24px;
+    margin-right: 5px;
+}
+.userCenter_flight_card_icon {
+    font-size: 30px;
+    align-self: center;
+    margin: 20px 0 {
+        bottom : 10px;
+    };
+}
+
+
+//=======================================
+//       编辑个人信息
+.editInfo {}
+$editAvatar_bg : #CCC;
+.editAvatar {
+    padding: 5px;
+}
+.editAvatar_space {
+    margin-right: 5px;
+    background-color: $editAvatar_bg;
+}
+.editAvatar_space_b {
+    margin-bottom: 5px;
+    background-color: $editAvatar_bg;
+}
+.editAvatar_space_t {
+    margin-top: 5px;
+}
+.editAvatar_bg {
+    background-color: $editAvatar_bg;
+}
+.editAvatar_add {
+    flex: 1;
+    align-self: stretch;
+    _border-width: $onePx;
+    border-color: $gray;
+    border-style: dashed;
+}
+
+
+//================================
+//        时间线
+$timeLine_height : 16px;
+.timeLine {
+    height: $timeLine_height;
+    flex-direction: row;
+}
+.timeLine_column {
+    width: $timeLine_height;
+    flex-direction: column;
+}
+.timeLine_line {
+    height: $timeLine_height/2;
+    border-bottom-width: 1px;
+    _border-bottom-width: $onePx;
+    border-color: #000;
+    flex: 1;
+}
+.timeLine_line_column {
+    width: $timeLine_height/2;
+    _border-right-width: $onePx;
+    border-color: #000;
+    flex: 1;
+}
+.timeLine_point {
+    height: $timeLine_height;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 2px;
+}
+.timeLine_point_text {
+    $w : 6px;
+    width: $w;
+    height: $w;
+    background-color: #000;
+    border-radius: $w/2;
+}
+.timeLine_active {
+    font-size: 16px;
+    color: $red;
+}
+.timeLine_content_right {
+    flex: 1;
+    padding-bottom: 30px;
+    padding-left: 0px;
+}
+.timeLine_page_header {
+    height: $headHeight;
+    flex-direction: row-reverse;
+}
+.timeLine_page_closeBtn {
+    align-self: center;
+    padding-right: $space;
+}
+.timeLine_page_closeBtn_text {
+    font-size: 30px;
+    color: #FFF;
+}
+
+//=================================
+//        我的档期
+.flightList {
+    padding-top: 10px;
+}
+.flightList_item {
+    background-color: #FFF;
+    margin: 10px {
+        top : 0;
+    };
+    padding: 10px;
+}
+.flightList_avatar {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+    border-radius: 30px;
+}
+.flightList_name,
+.flightList_price {
+}
+.flightList_theme,
+.flightList_time {
+    color: $gray;
+}
+.flightList_state {
+    _border-top-width: $onePx;
+    border-color: $gray;
+    margin-top: 10px;
+    padding-top: 10px;
+    flex-direction: row;
+}
+
+.flight_title {
+    padding-bottom: 5px;
+    _border-bottom-width: $onePx;
+    border-color: #CCC;
+    flex-direction: row;
+}
+.flight_title_icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+.flight_title_text {
+    flex: 1;
+}
+.flight_title_right {
+    font-size: 12px;
+    margin-right: 5px;
+}
+.flight_title_right_i {
+    font-size: 16px;
+    padding-top: 2px;
+}
+.flight_intro {
+    color: #CCC;
+    padding: 5px 0 {
+        bottom : 10px;
+    };
+}
+
+//=======================================
+//      订单信息
+//=======================================
+.orderInfo {
+    background-color: #FFF;
+    padding: $spaceMini $space;
+    border-bottom: 1px solid #CCC;
+    _border-width: $onePx;
+}
+.orderInfo_tr {
+    flex-direction: row;
+    padding: 2px 0;
+}
+.orderInfoText {
+    font-size: 13px;
+    padding-right: $spaceMini;
+}
+.orderInfoBtn {
+    align-self: stretch;
+    margin-right: $space;
+}
+.orderInfoBtn_text {
+    font-size: 28px;
+}
+
+//订单推送消息弹窗
+.orderPopupwrap {
+    background-color: #FFF;
+    border-radius: $space;
+}
+.orderPopupTitle {
+    padding: $space;
+    margin-bottom: $space;
+    background-color: #f1f1f1;
+    border-radius: $space $space 0 0;
+}
+.orderPopupBtns {
+    flex-direction: row;
+}
+.orderPopupBtn {
+    flex : 1;
+    @extend .button_red;
+    border-radius: 0 0 $space $space;
+}
+.orderPopupBtn_left {
+    flex : 1;
+    @extend .button;
+    border-radius: 0 0 0 $space;
+}
+.orderPopupBtn_right {
+    flex : 1;
+    @extend .button_red;
+    border-radius: 0 0 $space 0;
+}
+
+//订单推送消息在IM中渲染
+.orderMessageWrap {
+    background-color: #FFF;
+    border-radius: 3px;
+    border: 1px solid #f1f1f1;
+    _border-width: $onePx;
+    align-self: center;
+    margin-bottom: $spaceLegal;
+}
+.orderMessageTitle {
+    padding: $space;
+    border-bottom: 1px solid #f1f1f1;
+    _border-bottom-width: $onePx;
+}
+.orderMessageContent {
+    padding: $space;
+}
+
+
+
+
+//=======================================
+//        我的钱包
+//=======================================
+.wallet_head {
+    background-color: $red;
+    padding: 10px;
+}
+.wallet_btn {
+    padding: 5px 10px;
+    background-color: #FFF;
+    color: $red;
+    font-size: 14px;
+}
+.wallet_balance {
+    font-size: 30px;
+    padding: 10px 0;
+    color: #FFF;
+}
+.wallet_head_intro {
+    font-size: 10px;
+    color: #FFF;
+    padding-top: 2px;
+}
+.wallet_date {
+    font-size: 12px;
+    margin-top: 5px;
+    color: $gray;
+}
+.wallet_item {
+    padding: {
+        top: 10px;
+        bottom: 10px;
+    }
+}
+.wallet_money {
+    font-size: 16px;
+    padding-right: 5px;
+}
+
+.withdraw_formItem_wrap {
+    padding-left: $space;
+    background-color: #FFF;
+}
+.withdraw_formItem {
+    margin-bottom: 0;
+    _border-bottom-width: $onePx;
+    border-color: #CCC;
+}
+.alipayAndWeichat {
+    flex: 1;
+    flex-direction:row-reverse;
+}
+.alipayAndWeichat_item {
+    align-self: center;
+    margin-left: $space;
+    margin-right: $space;
+    flex-direction: row;
+    align-items: center;
+}
+.alipayAndWeichat_item_icon {
+    font-size: 16px;
+    margin-right: $spaceMini;
+}
+
+//==================================
+.auth_wrap {
+    padding: 10px;
+}
+.auth_item {
+    padding: 10px;
+    background-color: #FFF;
+}
+.auth_icon_wrap {
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+.auth_icon {
+    font-size: 50px;
+    color: $red;
+}
+.auth_intro {
+    flex: 1;
+    justify-content: center;
+}
+.authForm_tips {
+    background-color: $yellow;
+    padding: 5px 0;
+    margin: 10px 0;
+}
+.authForm_tips_b {
+    margin: 5px 10px;
+    font-size: 12px;
+    color: $gray;
+}
+.authForm_btn {
+    margin: 10px {
+        top: 30px;
+    }
+}
+
+
+//===================================
+//        出租
+//===================================
+.rent_title {
+    padding: 5px 10px;
+}
+.rent_skill_wrap {
+    padding: 10px;
+}
+.rent_item {
+    background-color: #FFF;
+    margin-bottom: 10px;
+}
+.rent_item_text {
+    padding: 10px;
+}
+.rent_del {
+    padding: 10px 20px;
+    border-left-width: 1px;
+    border-color: #CCC;
+    align-self: stretch;
+}
+.rent_del_icon {
+    font-size: 24px;
+    color: $red;
+}
+.rent_add_btn {
+    height: 50px;
+    _border-width: $onePx;
+    border-color: $gray;
+    border-style: dashed;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.rent_add_btn_text {
+    color: $gray;
+}
+.rent_add_btn_icon {
+    font-size: 24px;
+    margin-right: 5px;
+}
+.rent_foot {
+    _height: $footHeight;
+    background-color: #FFF;
+}
+.rent_btn {
+    margin: 10px {
+        top : 40px;
+    };
+}
+
+
+//==================================
+//        App状态栏
+.appStatus {
+    min-height: 24;
+    background-color: #ffffdd;
+    @extend .center;
+}
+
+
+//==================================
+//        公共底部
+//==================================
+.foot {
+    _min-height: $footHeight;
+    background-color: #FFF;
+}
+.foot_btn {
+    flex: 1;
+    background-color: $red;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 10px;
+    align-self: stretch;
+    border-radius: 2px;
+}
+.foot_btn_first {
+    width: 60px;
+    flex: 0;
+    margin-right: 0;
+    background-color: $gray;
+}
+.foot_btn_icon {
+    color: #FFF;
+    font-size: 25px;
+}
+
+
+//==================================
+//        个人信息
+//==================================
+.girl_bigImg_info_box {
+    position: absolute;
+    left: 10px;
+    bottom: 5px;
+    background-color: transparent;
+}
+.girl_bigImg_info_icon {
+    font-size: 18px;
+    align-self: center;
+    margin-right: 5px;
+}
+.girl_bigImg_btn {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-color: $red;
+    width: 70px;
+    height: 25px;
+    border-radius: 2px;
+}
+.girl_bigImg_btn_gray {
+    @extend .girl_bigImg_btn;
+    background-color: $gray
+}
+
+
+//==================================
+//       注册及登录
+//==================================
+.containerLogin {
+    padding-top: $headHeight;
+    background-color: $contentBackground;
+}
+.reg_wrap {
+    padding-top: 40px;
+}
+.btn_sendcode {
+    width: 60px;
+}
+.setAvatar { }
+.setAvatar_bigImg_wrap {
+    background-color: #CCC;
+    border-width: 5px;
+    border-color: #FFF;
+}
+.setAvatar_intro {
+    margin-bottom: 10px;
+    text-align: center;
+}
+.setAvatar_btn {
+    margin: 0 10px;
+}
+.setAvatar_btn_icon {
+    font-size: 26px;
+    color: #FFF;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+.login_alert_icon {
+    font-size: 16px;
+    margin-right: 5px;
+}
+.regBtn {
+    margin-left: 10px;
+}
+
+//================================
+//    租人流程
+//================================
+.datePickerOpacity {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+}
+.payIcon {
+    width: 25px;
+    height: 25px;
+    align-self: center;
+    align-items: center;
+    margin-right: $space;
+}
+.payPrice {
+    font-size: 10px;
+    color: $gray;
+}
+
+//===============================
+//      付款页面
+//===============================
+.pay_title {
+    margin-top: $spaceLegal;
+}
+.pay_wrap {
+    padding: $spaceLegal;
+}
+.pay_font {
+    color: $red;
+    font-size: 20px;
+}
+.pay_bigFont {
+    color: $red;
+    font-size: 26px;
+    margin: 0 $spaceMini;
+}
+.pay_btn {
+    margin-top: $spaceLegal;
+}
+
+//===================================
+
+//===================================
+//        列表
+//===================================
+/*
+
+<View style={[styles.listWrap]}>
+    <Text style={[styles.listTitle]}>
+    个人详情
+    </Text>
+    <View style={[styles.listItem]}>
+        <Icon name="logo-android" style={[styles.listItem_icon,styles.gray]} />
+        <View style={[styles.listItem_cotent]}>
+            <View style={[styles.listItem_title]}>
+                <Text style={[styles.gray]}
+                numberOfLines={1}>
+                标题～～～
+                </Text>
+            </View>
+            <Text style={[styles.listItem_intro]}>
+            右边的文字
+            </Text>
+            <Icon name="ios-arrow-forward" style={[styles.listItem_icon,styles.gray]} />
+        </View>
+    </View>
+</View>
+
+*/
+
+.listHeight {
+    _height : js(screenHeight \- js($headHeight));
+}
+
+.listTitle {
+    padding: $space;
+    color: $gray;
+    margin-top: $spaceMini;
+}
+.listSection {
+    height: 28px;
+    line-height: 28px;
+    padding-left: $space;
+    background-color: #f1f1f1;
+    padding-top: 2px;
+}
+.listWrap {
+    margin-bottom: 10px;
+}
+$listHeight : 45;
+$listLegalHeight : 80;
+.listItem {
+    background-color: #FFF;
+    flex-direction: row;
+}
+.listItem_cotent {
+    flex: 1;
+    min-height: $listHeight;
+    _border-bottom-width: $onePx;
+    border-color: #CCC;
+    flex-direction: row;
+    align-items: stretch;
+    margin: 0 10px;
+}
+.listItem_cotent_legal {
+    min-height: $listLegalHeight;
+}
+.leftItem_leftImage {
+    width: $listHeight - 10px;
+    height: $listHeight - 10px;
+    border-radius: ($listHeight - 10px)/2;
+    margin-right: 10px;
+    background-color: #000;
+    align-self: center;
+}
+.leftItem_leftImage_legal {
+    width: $listLegalHeight - 20px;
+    height: $listLegalHeight - 20px;
+    border-radius: ($listLegalHeight - 20px)/2;
+}
+.listItem_title {
+    justify-content: center;
+}
+.listItem_intro {
+    flex: 1;
+    align-self: center;
+    text-align: right;
+}
+.listItem_bottomText_before {
+    padding-top: $spaceMini;
+    padding-bottom: $spaceMini/2;
+}
+.listItem_bottomText {
+    padding-bottom: $spaceMini;
+}
+.listItem_icon_wrap {
+    min-width : $listHeight/2;
+    margin-left: $spaceMini;
+    @extend .center;
+}
+.listItem_icon {
+    font-size: $listHeight/2;
+    background-color: transparent;
+}
+.listItem_icon_right {
+    @extend .listItem_icon;
+    margin-right: $spaceMini;
+}
+.listItem_badge_wrap {
+    @extend .listItem_icon_wrap;
+    min-width: 1;
+    margin-left: $space;
+}
+.listItem_badge {
+    background-color: $red;
+    $height: 20;
+    height: $height;
+    padding : 0 $spaceMini;
+    border-radius: $height;
+    @extend .center;
+}
+.listItem_other {
+    padding-left: 10px;
+    flex-wrap: wrap;
+}
+.noBorder {
+    border-bottom-width: 0;
+}
+.listFoot {
+    padding-top: $space;
+    padding-bottom: $space*2;
+}
+.listFootIcon {
+    margin-right: $spaceMini;
+    font-size: 16px;
+}
+.listFootImage {
+    _width: js(screenWidth \/ 2);
+    _height: js(screenWidth \/ 2);
+    margin-bottom: $space;
+}
+
+//===================================
+//        按钮
+//===================================
+.button {
+    height: 40px;
+    background-color: #FFF;
+    justify-content: center;
+    align-items: center;
+}
+.button_red {
+    @extend .button;
+    background-color: $red;
+}
+.button_disable {
+    @extend .button;
+    background-color: $gray;
+}
+
+//===================================
+//        表单
+//===================================
+.formItem {
+    padding-left: 10px;
+    margin-bottom: 10px;
+    background-color: #FFF;
+    height: 40px;
+    flex-direction: row;
+}
+.formItem_column {
+    padding: 10px;
+    background-color: #FFF;
+    flex-direction: column;
+}
+.formLabel {
+    width: 90px;
+    align-self: center;
+}
+.formInput {
+    flex: 1;
+    font-size: 14px;
+    align-self: stretch;
+}
+.formInputArea {
+    flex: 1;
+    font-size: 14px;
+    height: 200px;
+}
+.formBtnInline {
+    @extend .button_red;
+    padding: 0 5px;
+    border-left-width: 5px;
+    border-color: $contentBackground;
+}
+.formInfo {
+    padding: 10px;
+}
+.formBtnBox {
+    padding: 10px {
+        top : 20px;
+    };
+}
+.formErr {
+    margin: 0 10px;
+    _border-width: $onePx;
+    border-color: #CCC;
+    border-style: dashed;
+    background-color: lighten($yellow,30%);
+    padding: 5px 0;
+    text-align: center;
+    color: $red;
+    font-size: 12px;
+}
+
+//==================================
+//        标签选择器
+//==================================
+.tagSelector_tabs {
+    background-color: $gray;
+    flex-direction: column;
+}
+.tagSelector_tab {
+    padding: 10px;
+    justify-content: center;
+}
+.tagSelector_tab_text {
+    color: #FFF;
+}
+.tagSelector_tab_active {
+    @extend .tagSelector_tab;
+    background-color: #FFF;
+}
+.tagSelector_tab_active_text {
+    color: #000;
+}
+.tagSelector_right {
+    flex: 1;
+    background-color: #FFF;
+    padding: 10px {
+        right : 0;
+    };
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.tagItem {
+    border-width: 1;
+    border-color: #CCC;
+    padding: 5px 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 1px;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-self: flex-start;
+}
+.tagItem_checked {
+    background-color: $red;
+    border-color: $red;
+}
+.tagItem_disable {
+    background-color: #CCC;
+    border-color: #CCC;
+}
+.tagItem_text {
+    color: #000;
+}
+.tagItem_checked_text {
+    color: #FFF;
+}
+.tagItem_disable_text {
+    color: $gray;
+}
+
+//===================================
+//        checkBox
+//===================================
+.checkBox {
+    padding: 10px {
+        bottom: 0;
+    };
+    background-color: #FFF;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.checkBox_item {
+    _border-width: $onePx;
+    border-color: #CCC;
+    padding: 2px 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 1px;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-self: flex-start;
+}
+.checkBox_text {
+    color: $gray;
+}
+.checkBox_icon {
+    color: #CCC;
+    margin-left: 5px;
+    font-size: 18px;
+}
+.checkBox_item_checked {
+    @extend .checkBox_item;
+    background-color: $red;
+    border-color: $red;
+}
+.checkBox_text_checked {
+    @extend .checkBox_text;
+    color: #FFF;
+}
+.checkBox_icon_checked {
+    @extend .checkBox_icon;
+    color: #FFF;
+}
+
+//=================================
+//    自定义switchButton
+//=================================
+$switchHeight : 20px;
+.switchButtonWrap {
+    height: $switchHeight;
+    border-radius: $switchHeight/2;
+    background-color: #000;
+    flex-direction: row;
+}
+.switchButton {
+    width: $switchHeight;
+    height: $switchHeight;
+    border-radius: $switchHeight/2;
+    background-color: #FFF;
+}
+.switchButton_text {
+    color: #FFF;
+    align-self: center;
+    padding: 0 $spaceMini;
+    background-color: transparent;
+    font-size: 12px;
+}
+
+
+//=================================
+//      IM
+//=================================
+$im_avatarWidth : 40;
+$im_itemBackground : #00ff00;
+%im_item_border {
+    border: 1px solid #f1f1f1;
+    _border-width: $onePx;
+}
+.im_itemWrap {
+    margin-bottom: $space;
+    flex-direction: row;
+    padding: $space;
+}
+.im_itemWrap_right {
+    @extend .im_itemWrap;
+    flex-direction: row-reverse;
+}
+.im_itemAvatarImage {
+    flex: 0;
+    width: $im_avatarWidth;
+    height: $im_avatarWidth;
+}
+.im_itemAvatar {
+    width: $im_avatarWidth;
+    height: $im_avatarWidth;
+    @extend %im_item_border;
+}
+.im_itemContent {
+    min-height: $im_avatarWidth;
+    border-radius: 5px;
+    margin-left: $space;
+    margin-right: 100px;
+    background-color: #FFF;
+    @extend %im_item_border;
+}
+.im_itemContent_right {
+    @extend .im_itemContent;
+    background-color: $im_itemBackground;
+    margin-left: 100px;
+    margin-right: $space;
+}
+.im_itemCornerWrap {
+    width: $space;
+    height: $spaceLegal;
+    overflow: hidden;
+    position: absolute;
+    left: - ( $space );
+    top : $space;
+}
+.im_itemCornerWrap_right {
+    @extend .im_itemCornerWrap;
+    right: - ( $space - 1px );
+    left: initial;
+}
+.im_itemCorner {
+    width : $spaceLegal;
+    height : $spaceLegal;
+    margin-left : 8px;
+    border-radius : 2px;
+    background-color : #FFF;
+    @extend %im_item_border;
+}
+.im_itemCorner_right {
+    @extend .im_itemCorner;
+    background-color: $im_itemBackground;
+}
+.im_itemTextBox {
+    padding: $space;
+}
+.im_itemImage {
+    border-radius: 3px;
+    margin: 2px;
+}
+.im_itemLocation_image {
+    border-radius: 0 0 6px 6px;
+    width: 210px;
+    height: 70px;
+}
+.im_itemLocation_text {
+    width: 210px;
+    background-color: #FFF;
+    border-radius: 5px 5px 0 0;
+    padding: $spaceMini;
+}
+.im_itemLocation_text_addr {
+    font-weight: bold;
+    margin-bottom: $spaceMini;
+}
+.im_status {
+    padding: $space;
+    @extend .row;
+    @extend .center;
+}
+.im_statusLoadingIcon {
+    margin-right: $spaceMini;
+}
+.im_statusText {
+    color: $gray;
+}
+.im_loadBtn {
+    flex: 0;
+    margin-top: $space;
+    margin-bottom: $spaceLegal;
+    align-self: center;
+    padding: 0 $space;
+}
+.im_item_time {
+    position: absolute;
+    right: 0;
+    bottom: -15px;
+    background-color: transparent;
+}
+.im_item_time_right {
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    background-color: transparent;
+}
+.im_item_time_text {
+    color: $gray;
+    font-size: 12px;
+    background-color: transparent;
+    white-space: nowrap;
+}
+
+//======================
+//======================
+
+$inputerHeight : 40;
+$inputerBackground : #f5f4f6;
+.im_inputerWrap {
+    background-color: $inputerBackground;
+}
+.im_inputerBar {
+    min-height: $inputerHeight;
+    border-top: 1px solid #d7d7d9;
+    _border-width: $onePx;
+    padding: 3px $spaceMini;
+    flex-direction: row;
+    align-items: center;
+}
+.im_inputerBtn {
+    $btnSize : $inputerHeight - 12px;
+    width: $btnSize;
+    height: $btnSize;
+    border-radius: ($btnSize)/2;
+    border: 1px solid #7f8389;
+    _border-width: $onePx;
+    margin-right: $space;
+    overflow: hidden;
+    @extend .center;
+}
+.im_inputerBtn_icon {
+    color: #7f8389;
+    font-size: 20px;
+}
+.im_inputerBtn_icon_faceWrap {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    @extend .center;
+}
+.im_inputerBtn_icon_face {
+    @extend .im_inputerBtn_icon;
+    font-size: 34px;
+    margin-left: -4px;
+    margin-top: 1px;
+}
+.im_inputerBtn_icon_plus {
+    @extend .im_inputerBtn_icon;
+    font-size: 30px;
+    margin-top: 1px;
+}
+.im_inputerBtn_icon_keyboard {
+    @extend .im_inputerBtn_icon;
+    margin-top: 1px;
+}
+.im_inputer_inputWrap {
+    flex: 1;
+    border: 1px solid #DDD;
+    _border-width: $onePx;
+    height: $inputerHeight - 10;
+    background-color: #FFF;
+    margin-right: $space;
+    padding-left: $spaceMini;
+    padding-right: $spaceMini;
+    border-radius: 5px;
+}
+.im_inputer_overLay {
+    background-color: transparent;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+.im_inputer_input {
+    flex: 1;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: $inputerHeight - 10;
+    background-color: transparent;
+}
+.im_inputerPlus {
+    border-top: 1px solid #d7d7d9;
+    _border-width: $onePx;
+    padding-left: $space;
+    padding-right: $space;
+    overflow: hidden;
+}
+.im_inputerPlus_item {
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+.im_inputerPlus_iconWrap {
+    background-color: #FFF;
+    border: 1px solid #dcdcdd;
+    _border-width: $onePx;
+    border-radius: 10px;
+    margin-top: $space;
+    margin-bottom: $spaceMini;
+    @extend .center;
+}
+.im_inputerPlus_icon {
+    color: #6f7378;
+    font-size: 40px;
+}
+.im_inputerPlus_font {
+    color: #888888;
+    margin-bottom: $space;
+}
+.im_faceSendBtnWrap {
+    background-color: rgba(0,0,0,0.1);
+}
+.im_faceSendBtn {
+    flex: 1;
+    @extend .button;
+    background-color: $blue;
+    height: 30px;
+}
+
+
+
+//=========================================
+//      App intro
+//=========================================
+.appIntro_wrap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    _width: js(screenWidth);
+    _height: js(screenHeight);
+    background-color: #FFF;
+}
+.appIntro_backImage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    _width: js(screenWidth \* js(2));
+    _height: js(screenHeight);
+}
+.appIntro_btnWrap {
+    position : absolute;
+    bottom : $space*2;
+    left : 0;
+    right : 0;
+    @extend .center;
+}
+.appIntro_btnEnter {
+    height : 40px;
+    background-color : #000;
+    border-radius : 3;
+    padding : 0 $space*2;
+}
+
+
+
+
+
+
+//========

@@ -1,0 +1,49 @@
+/**
+ * 刷新控件样式
+ */
+
+@import './base.scss';
+
+.scrollIndicator_wrap {
+    @extend .center;
+    position: absolute;
+    height:0;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    justify-content: flex-end;
+    padding-bottom: #{'$spacing'};
+}
+.scrollIndicator_icon {
+    @extend .center;
+    width: 30px;
+    height: 30px;
+    border-radius: 25px;
+    border-width: $onePx;
+    border-color: $gray;
+    background-color: #FFF;
+    overflow: hidden;
+}
+.scrollIndicator_icon_image {
+    width: 20px;
+    height: 20px;
+}
+.scrollIndicator_arraw {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    @extend .center;
+    padding-bottom: 5px;
+}
+.scrollIndicator_text {
+    line-height: 5px;
+    flex: 1;
+    text-align: center;
+    background-color: transparent;
+}
+
+
+
+
+

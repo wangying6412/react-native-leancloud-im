@@ -10,7 +10,7 @@ const gulp = require('gulp');
 
 const sass = require('gulp-sass');
 const reactNativeStylesheetCss = require('gulp-react-native-stylesheet-css');
-//const watch = require('gulp-watch');
+const watch = require('gulp-watch');
 const Path = require('path');
 const jsdoc = require('gulp-jsdoc3');
 const header = require('gulp-header');
@@ -49,13 +49,13 @@ gulp.task(
         $ gulp style
      */
     ()=>{
-        gulp.src('./src/Style/*.scss')
+        return watch('./src/components/Dui/css/*.scss',{ ignoreInitial: false  })
             .pipe(sass())
             .pipe(reactNativeStylesheetCss({
                 withExtendedStyleSheet: false,
                 outputPlainObject: true,
             }))
-            .pipe(gulp.dest('./src/Style/'));
+            .pipe(gulp.dest('./src/components/Dui/css/'));
     }
 );
 

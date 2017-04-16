@@ -10,6 +10,9 @@ import React from 'react';
 import {
     Text,
 } from 'react-native';
+import {
+    ScrollView
+} from './Dui';
 
 import TabBarIcon from './TabBarIcon';
 
@@ -37,7 +40,9 @@ class ChatList extends React.Component{
 
     render(){
         return(
-            <Text>Hello world!</Text>
+            <ScrollView delay={0}>
+                <Text>Hello world!</Text>
+            </ScrollView>
         );
     }
 }

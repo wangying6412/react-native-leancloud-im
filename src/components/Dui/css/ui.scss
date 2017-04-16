@@ -1,0 +1,481 @@
+$red : #F40;
+$blue : #3b5998;
+$green : #00ff00;
+$gray : #CCC;
+
+.container {
+    flex: 1;
+}
+.bigImage  {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+//******************************
+
+//*******************************
+.tab {
+    // padding-top: 42px;
+}
+
+//******************************************
+.loadingBox {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(#FFF,0.5);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
+.loginBox {
+    background-color: rgba(#FFF,0.9);
+    width: auto;
+    align-self: center;
+    margin-top: -150px;
+    border-radius: 5px;
+}
+.loginBox_head {
+    border-bottom: {
+        width: 1px;
+    }
+    border-color: #CCC;
+}
+.loginBox_title {
+    flex: 1;
+    padding: 15px;
+    font-size: 16px;
+    text-align: center;
+}
+.loginBox_content {
+    padding: {
+        top: 20px;
+        bottom: 20px;
+    }
+}
+.loginBox_tr {
+    flex: 1;
+    flex-direction: row;
+    padding: {
+        top: 10px;
+        bottom: 10px;
+    }
+}
+.loginBox_td1 {
+    width: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: right;
+    align-self: center;
+}
+.loginBox_td2 {
+    flex: 2;
+}
+.loginBox_input {
+    height: 30px;
+    font-size: 14px;
+    flex: 1;
+}
+.loginBox_foot {
+    border-top-width: 1px;
+    border-color: #CCC;
+    padding: 10px;
+}
+.loginBox_btns {
+    flex-direction: row;
+}
+.loginBox_links {
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+//********************************************
+.colorRed {
+    color: $red
+}
+.colorBlue {
+    color: $blue
+}
+.colorGreen {
+    color: $green
+}
+.colorGray {
+    color: $gray
+}
+
+//******************************************
+.btn {
+    background-color: $gray;
+    padding: 10px;
+    border-radius: 5px;
+    align-items: center;
+    flex:1;
+}
+.btn_red {
+    @extend .btn;
+    background-color: $red;
+}
+.btn_blue {
+    @extend .btn;
+    background-color: $blue;
+}
+.btn_green {
+    @extend .btn;
+    background-color: $green;
+}
+.btn_text {
+    color: #FFF;
+}
+
+//********************************************
+.navBar {
+    background-color: #e9e9e9;
+    border-bottom-width: 1;
+    border-color: #a1a0a6;
+}
+.navBarText {
+    font-size: 16;
+    padding-top: 10px;
+}
+.navBarTitleText {
+    color: #000;
+    font-weight: bold;
+}
+.navBarIcon {
+    font-size: 25px;
+    margin-right: 10px;
+}
+.navBarButton {
+    flex-direction: row;
+    align-items: center;
+}
+.navBarLeftButton {
+    padding-left: 10;
+}
+.navBarRightButton {
+    padding-right: 10;
+}
+.navBarButtonText {
+    color: $blue;
+}
+.appContainer  {
+    padding-top: 62px;
+    background-color: #f0eff5
+}
+
+//********************************************
+
+//****************************************
+.tag  {
+    font-size: 11;
+    padding: 3;
+    padding-left: 5;
+    padding-right: 5;
+    border-radius: 5;
+    background-color: $red;
+    color: #FFF;
+    margin-right: 5;
+    align-self: center
+}
+
+//********************************************
+.listView {
+    border-top-width: 1;
+    border-color: #ececec
+}
+.listLayout {
+    margin-bottom: 10px;
+    background-color: #FFF;
+}
+.listTitle {
+    padding: {
+        left: 10px;
+        bottom: 5px;
+    }
+    font-size: 13px;
+    color: #666;
+}
+.listRow_wrap {
+    padding-left: 10px;
+    background-color: #FFF;
+}
+.listRow {
+    align-items: center;
+    flex-direction: row;
+    padding: 5;
+    background-color: #FFF;
+    border-bottom-width: 1;
+    border-color: #ececec;
+}
+.listRow_last {
+    border-bottom-width: 0;
+}
+.listRow_thumb  {
+    width: 80;
+    height: 60;
+    border-width: 1;
+    border-color: #e5e5e5;
+    margin-right: 5;
+    border-radius: 2
+}
+.listRow_content  {
+    flex: 1;
+    flex-direction: column;
+    align-self: stretch
+}
+.listRow_title  {
+    flex: 1;
+    justify-content: center;
+}
+.listRow_sub  {
+    flex: 1;
+    flex-direction: row
+}
+.listRow_fontBox {
+    flex:1;
+    padding: {
+        top: 5px;
+        bottom: 5px;
+    }
+}
+.listRow_sub_fons  {
+    flex: 1;
+    justify-content: flex-end;
+}
+.listRow_bigFont  {
+    font-size: 14;
+    // font-weight: bold;
+}
+.listRow_messageTitle {
+    @extend .listRow_bigFont;
+    flex: 1;
+    flex-direction: row;
+}
+.listRow_minFont  {
+    font-size: 10;
+    color: #999
+}
+.listRow_rightText {
+    align-self: center;
+}
+.listRow_badge {
+    background-color: $red;
+    border-radius: 100px;
+    padding: 3px;
+    align-self: center;
+}
+.listRow_grayFont {
+    color: $gray;
+    padding-right: 10px;
+}
+.listRow_icon  {
+    justify-content: center;
+    padding-left: 5;
+    padding-right: 10
+}
+.listRow_miniIcon  {
+    margin-left: 10;
+    margin-right: 10
+}
+.listRow_avatar {
+    width: 40px;
+    height: 40px;
+    border-width: 1px;
+    border-color: $gray;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+.listRow_centerFont {
+    color:$blue;
+    align-self: center;
+}
+.listEmpty {
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+.listEmpty_txt {
+    color: $gray;
+}
+.listBottom_btns {
+    padding: {
+        top: 20;
+        right: 10;
+        bottom: 50;
+        left: 10;
+    }
+}
+
+//*****************************************
+.priceList  {
+    flex: 1;
+    height: 50
+}
+
+//****************************************
+.miniList  {
+    margin-top: 20;
+    border-top-width: 2;
+    border-color: #000
+}
+.miniListItem  {
+    flex: 1;
+    height: 30;
+    padding-top: 10;
+    padding-bottom: 10;
+}
+
+//*****************************************
+.ticket_price {
+    font-size: 18px;
+    font-weight: bold;
+    color: $red;
+}
+.ticket_price_sub_text {
+    font-size: 12px;
+    margin-left: 3px;
+    align-self: center;
+    margin-top: 4px;
+}
+
+//********************************************
+.tag {
+    font-size: 12px;
+    height: 20px;
+    background-color: $red;
+    color: #FFF;
+    border-radius: 5px;
+    padding: {
+        left: 5px;
+        right: 5px;
+    }
+    margin-right: 5px;
+}
+.tag_red {
+    @extend .tag;
+}
+.tag_blue {
+    @extend .tag;
+    background-color: $blue;
+}
+.tag_green {
+    @extend .tag;
+    background-color: $green;
+}
+.tag_gray {
+    @extend .tag;
+    color: $blue;
+    background-color: $gray;
+}
+
+//**********************************************
+.form_image {
+    width: 30px;
+    height: 30px;
+}
+.form_tr {
+    @extend .listRow;
+}
+.form_td1 {
+    width: 70;
+    text-align: right;
+    font-size: 12px;
+    color: #666;
+    align-self: center;
+}
+.form_td2 {
+    flex: 1;
+    padding-left: 10px;
+    height: 30px;
+    justify-content: center;
+}
+.form_input {
+    flex: 1;
+    font-size: 14px;
+}
+.form_btns {
+    flex-direction: row;
+    margin-top: 20px;
+    padding: {
+        left : 10px;
+        right : 10px;
+    }
+}
+.form_submit {
+    @extend .btn;
+    flex: 1;
+}
+.form_submit_text {
+    color: #FFF;
+}
+
+//******************************************
+.company { }
+.company_title {
+    font-size: 16px;
+    padding: 10px {
+        left : 0
+    };
+}
+
+//**********************************************
+.selectModal_layout {
+    height: 300px;
+    background-color: #999;
+    border-top-width: 1px;
+    border-color: #666;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.selectModal_head {
+    background-color: #666;
+    flex-direction: row;
+    padding: {
+        left : 20px;
+        right: 20px;
+        top: 5px;
+        bottom: 5px;
+    }
+}
+.selectModal_box {
+}
+.selectModal_cancel,
+.selectModal_ok {
+    color: #FFF;
+    background-color: $blue;
+    padding: 3px;
+}
+.selectModal_title {
+    flex: 1;
+    text-align: center;
+    align-self: center;
+    color:#FFF;
+}
+
+.carousel {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
