@@ -4,7 +4,8 @@
  */
 
 import {
-    Dimensions
+    Dimensions,
+    PixelRatio,
 } from 'react-native';
 
 const {
@@ -31,40 +32,41 @@ let options = {
 /**
  * 样式
  */
-let styles = {
+let theme = {
 
     /**
      * 尺寸
      */
-    headHeight : 64,
-    footHeight : height*0.07,
-    stateBarHeight : 20,
+    $headHeight : 64,
+    $footHeight : height*0.07,
+    $stateBarHeight : 20,
 
     /**
      * 间隔
      */
-    spacing : 10,
+    $spacing : 10,
+    $onePx : 1/PixelRatio.get(),
 
     /**
      * 颜色
      */
-    red : '#de6e00',
-    green : '#1fd89c',
-    blue : '#00c3d9',
-    yellow : '#f4c60e',
-    gray : '#808080',
+    $red : '#de6e00',
+    $green : '#1fd89c',
+    $blue : '#00c3d9',
+    $yellow : '#f4c60e',
+    $gray : '#808080',
 };
 
 /**
  * 设置dui样式
  *
- * @name setStyles
+ * @name setTheme
  * @function
  * @access public
- * @param {Object} _styles - 颜色，尺寸等
+ * @param {Object} _theme - 颜色，尺寸等
  */
-function setStyles(_styles){
-    Object.assign(styles,_styles);
+function setTheme(_theme){
+    Object.assign(theme,_theme);
 }
 
 /**
@@ -80,10 +82,10 @@ function config(ops={}){
 
 export default config;
 export {
-    setStyles,
+    setTheme,
     options,
+    theme,
 };
-export const styleOptions = styles;
 
 
 

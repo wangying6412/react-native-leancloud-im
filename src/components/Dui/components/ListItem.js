@@ -1,11 +1,14 @@
-/* global styles */
-
-/*
-    useage
-
-    <ListRow
-        ref="asdf"
-        icon="xxxxx"
+/**
+ * 单个列表项
+ *
+ * @module ListItem
+ * @author lihaitang
+ * @version v0.0.1
+ * @example
+ * ```
+    <ListItem
+        title="列表标题"
+        leftIcon="xxxxx"
         onPress = {
             //function
         }
@@ -16,14 +19,14 @@
         leftImage = 'xxxxxxxxxxxxxx',
         rightIcon = "none" || ''
         legal
-
         checked
-    >列表标题</ListRow>
+    />
+ * ```
+ */
 
-    this.refs['asdf'].changeRightText('10')     //改变列表项右边的文字
-*/
-
-import React from 'react';
+import React, {
+    PropTypes
+} from 'react';
 import {
     Text,
     View,
@@ -32,44 +35,80 @@ import {
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
-// import styles from '../misc/css/ui';
 
+import styles from '../css';
 
-class ListRow extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            rightText : this.props.rightText || false,
-            bottomText : this.props.bottomText || false,
-            badge : this.props.badge
+class ListItem extends React.Component{
+
+    static get propTypes(){
+
+        const stringOrElement = PropTypes.oneOfType([PropTypes.string,PropTypes.element]);
+
+        return {
+            /**
+             * ListItem的标题
+             */
+            title          : stringOrElement,
+            /**
+             * ListItem 左侧的图标
+             */
+            leftIcon       : PropTypes.string,
+            /**
+             * ListItem 左侧的图片，头像之类的
+             */
+            leftImage      : PropTypes.string,
+            /**
+             * ListItem 右侧的文字，“查看更多”之类的
+             */
+            rightText      : stringOrElement,
+            /**
+             * ListItem 右侧的文字的颜色
+             */
+            rightTextColor : PropTypes.string,
+            /**
+             * ListItem 右侧的图标，默认为向右的箭头,如果设为“none”则不显示图标
+             */
+            rightIcon      : PropTypes.string,
+            /**
+             * ListItem 底部的文字
+             */
+            bottomText     : stringOrElement,
+            /**
+             * ListItem badge就是气泡数字
+             */
+            badge          : PropTypes.number,
+            /**
+             * ListItem 大尺寸的列表项
+             */
+            legal          : PropTypes.bool,
+            /**
+             * ListItem 点击事件
+             */
+            onPress        : PropTypes.func,
+            /**
+             * ListItem 如果设置了该项，右侧图标会变成复选框
+             */
+            checked        : PropTypes.bool,
         };
     }
 
-    changeRightText(t){
-        if(t){
-            this.setState({
-                rightText : t
-            });
-        }
+    constructor(props){
+        super(props);
     }
 
-    changeBadge(n){
-        this.setState({
-            badge : n
-        });
-    }
+    render(){
 
-    render() {
-        var css = this.props.style || {};
+        const title =  this.props.title || this.props.children ;
+
         return (
             <TouchableHighlight
-                onPress = {(this.props.onPress || function(){})}
+                onPress = {this.props.onPress && this.props.onPress()}
             >
-                <View style={[styles.listItem,css]}>
+                <View style={[styles.listItem,this.props.style]}>
                     {
-                        this.props.icon &&
+                        this.props.leftIcon &&
                         <View style={[styles.listItem_icon_wrap]}>
-                            <Icon name={this.props.icon} style={[styles.listItem_icon,styles.gray]} />
+                            <Icon name={this.props.leftIcon} style={[styles.listItem_icon,styles['font_gray']]} />
                         </View>
                     }
                     <View style={
@@ -83,8 +122,8 @@ class ListRow extends React.Component {
                             <Image source={{
                                 uri : this.props.leftImage
                             }} style={[
-                                styles.leftItem_leftImage,
-                                this.props.legal && styles.leftItem_leftImage_legal
+                                styles.listItem_leftImage,
+                                this.props.legal && styles.listItem_leftImage_legal
                             ]} />
                         }
 
@@ -95,32 +134,30 @@ class ListRow extends React.Component {
                             ]}>
                                 <View style={[styles.listItem_title]}>
                                 {
-                                    typeof this.props.children === 'string' ?
-                                    <Text style={[styles.gray]}
+                                    typeof title === 'string' ?
+                                    <Text style={[styles['font_gray']]}
                                     numberOfLines={1}>
-                                    {this.props.children}
+                                    {title}
                                     </Text>
                                     :
-                                    this.props.children
+                                    title
                                 }
                                 </View>
-                                {
-                                    <Text
-                                        style={[styles.listItem_intro,this.props.rightTextColor && {
-                                            color : this.props.rightTextColor
-                                        }]}
-                                        numberOfLines={1}
-                                    >
+                                <Text
+                                    style={[styles.listItem_intro,this.props.rightTextColor && {
+                                        color : this.props.rightTextColor
+                                    }]}
+                                    numberOfLines={1}
+                                >
                                     {this.props.rightText}
-                                    </Text>
-                                }
+                                </Text>
                             </View>
                             {
                                 Boolean(this.props.bottomText) &&
                                 <View style={[styles.flex1,styles.listItem_bottomText]}>
                                 {
                                     typeof this.props.bottomText === 'string' ?
-                                    <Text style={[styles.gray,{
+                                    <Text style={[styles.font_gray,{
                                         minHeight : 20,
                                     }]}
                                         numberOfLines={1}
@@ -135,7 +172,7 @@ class ListRow extends React.Component {
                             Boolean(this.props.badge) &&
                             <View style={[styles.listItem_badge_wrap]}>
                                 <View style={[styles.listItem_badge]}>
-                                    <Text style={[styles.white]}>{this.props.badge}</Text>
+                                    <Text style={[styles.font_white]}>{this.props.badge}</Text>
                                 </View>
                             </View>
                         }
@@ -145,7 +182,7 @@ class ListRow extends React.Component {
                             typeof this.props.checked !== 'boolean')
                             &&
                             <View style={[styles.listItem_icon_wrap]}>
-                                <Icon name={ this.props.rightIcon || 'ios-arrow-forward' } style={[styles.listItem_icon,styles.gray,
+                                <Icon name={ this.props.rightIcon || 'ios-arrow-forward' } style={[styles.listItem_icon,styles.font_gray,
                                 ]} />
                             </View>
                         }
@@ -155,7 +192,7 @@ class ListRow extends React.Component {
                                     return (
                                         <View style={[styles.listItem_icon_wrap]}>
                                             <Icon name="ios-checkmark-outline"
-                                                style={[styles.listItem_icon_right,styles.gray,
+                                                style={[styles.listItem_icon_right,styles.font_gray,
                                             ]} />
                                         </View>
                                     );
@@ -163,12 +200,11 @@ class ListRow extends React.Component {
                                     return (
                                         <View style={[styles.listItem_icon_wrap]}>
                                             <Icon name="ios-checkmark-circle"
-                                            style={[styles.listItem_icon_right,styles.red,
+                                            style={[styles.listItem_icon_right,styles.font_red,
                                             ]} />
                                         </View>
                                     );
                                 }
-
                             })()
                         }
                     </View>
@@ -178,4 +214,8 @@ class ListRow extends React.Component {
     }
 }
 
-module.exports = ListRow;
+export default ListItem;
+
+
+
+

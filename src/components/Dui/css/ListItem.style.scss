@@ -1,0 +1,87 @@
+/**
+ * ListItem - 列表项样式
+ */
+
+@import './base.scss';
+
+$listHeight : 45;
+$listLegalHeight : 80;
+.listItem {
+    background-color: #FFF;
+    flex-direction: row;
+}
+.noBorder {
+    border-bottom-width: 0;
+}
+
+.listItem_cotent {
+    flex: 1;
+    min-height: $listHeight;
+    border-bottom-width: $onePx;
+    border-color: #CCC;
+    flex-direction: row;
+    align-items: stretch;
+    margin: 0 10px;
+}
+.listItem_cotent_legal {
+    min-height: $listLegalHeight;
+}
+.listItem_leftImage {
+    width: $listHeight - 10px;
+    height: $listHeight - 10px;
+    border-radius: ($listHeight - 10px)/2;
+    margin-right: 10px;
+    background-color: #000;
+    align-self: center;
+}
+.listItem_leftImage_legal {
+    width: $listLegalHeight - 20px;
+    height: $listLegalHeight - 20px;
+    border-radius: ($listLegalHeight - 20px)/2;
+}
+.listItem_title {
+    justify-content: center;
+}
+.listItem_intro {
+    flex: 1;
+    align-self: center;
+    text-align: right;
+}
+.listItem_bottomText_before {
+    padding-top: #{'$spacing * 0.5'};
+    padding-bottom: #{'$spacing * 0.25'};
+}
+.listItem_bottomText {
+    padding-bottom: #{'$spacing * 0.5'};
+}
+.listItem_icon_wrap {
+    min-width : $listHeight/2;
+    margin-left: #{'$spacing * 0.5'};
+    @extend .center;
+}
+.listItem_icon {
+    font-size: $listHeight/2;
+    background-color: transparent;
+}
+.listItem_icon_right {
+    @extend .listItem_icon;
+    margin-right: #{'$spacing * 0.5'};
+}
+.listItem_badge_wrap {
+    @extend .listItem_icon_wrap;
+    min-width: 1;
+    margin-left: #{'$spacing'};
+}
+.listItem_badge {
+    background-color: $red;
+    $height: 20;
+    height: $height;
+    padding: 0 #{'$spacing * 0.5'};
+    border-radius: $height;
+    @extend .center;
+}
+
+
+
+
+

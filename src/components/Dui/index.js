@@ -9,15 +9,22 @@
 //import Loading from '../dui-loading';
 //
 import ScrollView from './components/DuiScrollView';
+import Body from './components/Body';
+import ListItem from './components/ListItem';
 
 import config,{
-    styleOptions,
+    setTheme,
     options,
+    theme,
 } from './Dui.config.js';
 
 export {
+    Body,
     ScrollView,
+    ListItem,
+
     config,
     options,
-    styleOptions,
+    theme,
+    setTheme,
 };

@@ -8,10 +8,8 @@
 
 import React from 'react';
 import {
-    Text,
-} from 'react-native';
-import {
-    ScrollView
+    Body,
+    ListItem,
 } from './Dui';
 
 import TabBarIcon from './TabBarIcon';
@@ -40,9 +38,9 @@ class ChatList extends React.Component{
 
     render(){
         return(
-            <ScrollView delay={0}>
-                <Text>Hello world!</Text>
-            </ScrollView>
+            <Body refreshing={false} onRefresh={()=>{}}>
+                <ListItem title="hello world!!" />
+            </Body>
         );
     }
 }

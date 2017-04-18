@@ -30,38 +30,34 @@ module.exports = {
     "stretch": {
         "alignItems": "stretch"
     },
-    "font-red": {
+    "font_red": {
         "color": "$red"
     },
-    "font-green": {
+    "font_green": {
         "color": "$green"
     },
-    "font-blue": {
+    "font_blue": {
         "color": "$blue"
     },
-    "font-yellow": {
+    "font_yellow": {
         "color": "$yellow"
     },
-    "font-gray": {
+    "font_gray": {
         "color": "$gray"
     },
-    "font-black": {
+    "font_black": {
         "color": "#000"
     },
-    "font-white": {
+    "font_white": {
         "color": "#FFF"
     },
-    "font-bold": {
+    "font_bold": {
         "fontWeight": "bold"
     },
-    "font-mini": {
+    "font_mini": {
         "fontSize": "0.8rem"
     },
-    "font-legal": {
+    "font_legal": {
         "fontSize": "1.5rem"
-    },
-    "font-breadAll": {
-        "wordWrap": "break-word",
-        "wordBreak": "break-all"
     }
 }

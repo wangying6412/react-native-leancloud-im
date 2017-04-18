@@ -130,39 +130,46 @@ module.exports = {
     "stretch": {
         "alignItems": "stretch"
     },
-    "font-red": {
+    "font_red": {
         "color": "$red"
     },
-    "font-green": {
+    "font_green": {
         "color": "$green"
     },
-    "font-blue": {
+    "font_blue": {
         "color": "$blue"
     },
-    "font-yellow": {
+    "font_yellow": {
         "color": "$yellow"
     },
-    "font-gray": {
+    "font_gray": {
         "color": "$gray"
     },
-    "font-black": {
+    "font_black": {
         "color": "#000"
     },
-    "font-white": {
+    "font_white": {
         "color": "#FFF"
     },
-    "font-bold": {
+    "font_bold": {
         "fontWeight": "bold"
     },
-    "font-mini": {
-        "fontSize": "0.8rem"
+    "font_mini": {
+        "fontSize": 12
     },
-    "font-legal": {
-        "fontSize": "1.5rem"
+    "girls_skill": {
+        "fontSize": 12,
+        "flex": 1,
+        "color": "#FFF",
+        "paddingRight": 5
     },
-    "font-breadAll": {
-        "wordWrap": "break-word",
-        "wordBreak": "break-all"
+    "girls_price": {
+        "fontSize": 12,
+        "color": "#808080",
+        "alignSelf": "flex-end"
+    },
+    "font_legal": {
+        "fontSize": 16
     },
     "size": {
         "headHeight": 64,
@@ -216,23 +223,6 @@ module.exports = {
         "marginBottom": 20,
         "marginRight": 20,
         "marginLeft": 20
-    },
-    "font_mini": {
-        "fontSize": 12
-    },
-    "girls_skill": {
-        "fontSize": 12,
-        "flex": 1,
-        "color": "#FFF",
-        "paddingRight": 5
-    },
-    "girls_price": {
-        "fontSize": 12,
-        "color": "#808080",
-        "alignSelf": "flex-end"
-    },
-    "font_legal": {
-        "fontSize": 16
     },
     "breadAll": {
         "wordWrap": "break-word",

@@ -1,0 +1,18 @@
+/**
+ * Body 组件的样式
+ */
+
+@import './base.scss';
+
+/**
+ * App 状态栏
+ */
+.appStatus {
+    min-height: 24;
+    background-color: #ffffdd;
+    @extend .center;
+}
+
+.bodyWrapper {
+    height: 100%;
+}

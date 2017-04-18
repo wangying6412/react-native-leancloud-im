@@ -18,6 +18,7 @@ const args = require('yargs').argv;
 const fs = require('fs');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
+const plumber = require('gulp-plumber');
 
 gulp.task(
     'jsdoc',
@@ -50,6 +51,7 @@ gulp.task(
      */
     ()=>{
         return watch('./src/components/Dui/css/*.scss',{ ignoreInitial: false  })
+            .pipe(plumber())
             .pipe(sass())
             .pipe(reactNativeStylesheetCss({
                 withExtendedStyleSheet: false,

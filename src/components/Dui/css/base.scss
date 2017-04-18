@@ -3,9 +3,17 @@
  */
 
 /**
+ * 尺寸
+ */
+$headHeight : #{'$headHeight'};
+$footHeight : #{'$footHeight'};
+$stateBarHeight : #{'$stateBarHeight'};
+
+/**
  * 间隔
  */
 $onePx : #{'$onePx'};
+$speacing : #{'$speacing'};
 
 /**
  * 颜色
@@ -33,17 +41,17 @@ $gray : #{'$gray'};
 /**
  * 文字
  */
-.font-red { color: $red; }
-.font-green { color: $green; }
-.font-blue { color: $blue; }
-.font-yellow { color: $yellow; }
-.font-gray { color: $gray; }
-.font-black { color: #000; }
-.font-white { color: #FFF; }
-.font-bold { font-weight: bold; }
-.font-mini { font-size: 0.8rem; }
-.font-legal { font-size: 1.5rem; }
-.font-breadAll { word-wrap: break-word; word-break: break-all; }
+.font_red { color: $red; }
+.font_green { color: $green; }
+.font_blue { color: $blue; }
+.font_yellow { color: $yellow; }
+.font_gray { color: $gray; }
+.font_black { color: #000; }
+.font_white { color: #FFF; }
+.font_bold { font-weight: bold; }
+.font_mini { font-size: 0.8rem; }
+.font_legal { font-size: 1.5rem; }
+//.font_breadAll { word-wrap: break-word; word-break: break-all; }
 
 
 
