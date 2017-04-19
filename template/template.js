@@ -7,11 +7,11 @@ import {
 class $Name$ extends React.Component{
 
     static get propTypes(){
-
+        return {};
     }
 
     static get defaultProps(){
-
+        return {};
     }
 
     static get navigationOptions(){

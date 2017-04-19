@@ -9,6 +9,8 @@
     "devtools": "react-devtools"
   },
   "dependencies": {
+    "leancloud-realtime": "^3.4.1",
+    "leancloud-storage": "^2.1.4",
     "normalizr": "^3.2.2",
     "react": "16.0.0-alpha.6",
     "react-native": "^0.43.2",
@@ -17,6 +19,10 @@
     "react-navigation": "github:react-community/react-navigation",
     "react-redux": "^5.0.4",
     "redux": "^3.6.0",
+    "redux-actions": "^2.0.2",
+    "redux-immutablejs": "0.0.8",
+    "redux-persist-immutable": "^4.2.0",
+    "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.0"
   },
