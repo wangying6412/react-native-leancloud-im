@@ -1,13 +1,16 @@
 /**
  * rootReducer
  *
- * @module
+ * @module reducers
  */
 
 import { combineReducers } from 'redux-immutablejs';
 import Immutable from 'immutable';
 
-import imConfig from './im.config.js';
+import imInit from './imInit';
+import fetchState from './fetchState';
+
+import types from '../actions/types';
 
 let testState = Immutable.fromJS({a:1});
 let testReducer = (state=testState)=>state;
@@ -25,23 +28,22 @@ const entities = combineReducers({aaa : (state=testState,action)=>{
 }});
 
 /**
- * 网络状态
+ * reducer im客户端状态，在线、离线等
+ *
+ * @function reducers~imStatus
+ * @param {string||Object} state - 状态，可以是字符串，或者Error对象
+ * @param {Object} action - action
  */
+const imStatus = (state='',action)=>{
+    const { type, payload, error } = action;
+    const str = error ? payload.message : payload;
 
-    /*fetchState : {
-        chatList : {
-            isFetching : false,
-            isRefresing : false,
-            didInvalidate : false,
-            lastUpdated : null,
-            fetchedPageCount : 0,
-            nextPageUrl : null,
-            error : 'false',
-            errorText : null,
-        }
-    },*/
-
-const fetchState = combineReducers({testReducer});
+    if(type === types.IM_STATUS){
+        return str;
+    }else{
+        return state;
+    }
+};
 
 /**
  * UI数据
@@ -52,7 +54,8 @@ const ui = combineReducers({testReducer});
  * 根reducer
  */
 const rootReducer = combineReducers({
-    imConfig,
+    config : imInit,
+    imStatus,
     entities,
     fetchState,
     ui,

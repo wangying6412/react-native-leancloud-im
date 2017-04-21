@@ -16,6 +16,7 @@ import {
 init({
     appId : 'U5HyR6jYogivsvYwbqqJ0TpN-gzGzoHsz',
     appKey : 'ezu33v4s146aRw4oR7wfczJv',
+    ownerId : 1,
 });
 
 const AppRouters = StackNavigator(Router);

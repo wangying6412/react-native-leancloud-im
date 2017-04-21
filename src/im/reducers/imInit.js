@@ -3,23 +3,29 @@
  */
 
 import Immutable from 'immutable';
-import { IM_INIT } from '../actions';
+import types from '../actions/types';
 
 const $initialState = Immutable.fromJS({
     appId : null,
     appKey : null,
+    ownerId : null,
 });
 
 export default ($state=$initialState,action)=>{
     const {
         type,
-        payload
+        payload,
     } = action;
 
     switch(type){
-        case IM_INIT:
+        case types.IM_INIT:
             return $state.merge(payload);
         default:
             return $state;
     }
 };
+
+
+
+
+

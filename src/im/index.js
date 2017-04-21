@@ -17,7 +17,7 @@ import {persistStore, autoRehydrate} from 'redux-persist-immutable';
 import {AsyncStorage} from 'react-native';
 
 import {
-    im_init
+    imInit
 } from './actions';
 
 const composeEnhancers =
@@ -33,11 +33,10 @@ const store = createStore(rootReducer,composeEnhancers(
 /**
  * 持久化存储
  */
-persistStore(store,{storage: AsyncStorage});
-
+persistStore(store,{storage: AsyncStorage}).purge();
 const { dispatch } = store;
 
-export const init = bindActionCreators(im_init,dispatch);
+export const init = bindActionCreators(imInit,dispatch);
 
 
 
