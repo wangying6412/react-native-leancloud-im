@@ -10,6 +10,8 @@ import types from './types';
 
 import createIMClient from './createIMClient';
 
+import { createChat } from './createChat.js';
+
 /**
  * im初始化
  *
@@ -38,7 +40,8 @@ export const imInit = ({appId,appKey,ownerId})=>(dispatch)=>{
          */
         dispatch(createIMClient(appId,ownerId)).then(({im,realtime})=>{
 
-            im;
+            dispatch(saveIm(im));
+
             //im.on('unreadmessages',_onUnreadmessages);    // 当接收到未读提醒
             //im.on('receipt',_onReceipt);                  // 当接收到已读回执
             //im.on('conflict',_onConflict);                // 当在别处登录
@@ -53,6 +56,17 @@ export const imInit = ({appId,appKey,ownerId})=>(dispatch)=>{
         });
     }
 };
+
+/**
+ * action creator - 保存IM对象
+ *
+ * @function actions~saveIm
+ * @param {Object} payload - im对象
+ * @example
+ *
+ * dispatch(saveIm(im))
+ */
+export const saveIm = createAction(types.IM_SAVE_IM);
 
 /**
  * action creator - im客户端状态，在线、离线等
@@ -81,5 +95,7 @@ export const imStatus = createAction(types.IM_STATUS);
  */
 export const fetchState = createAction(types.IM_FETCH_STATE,null,(payload,meta)=>meta);
 
-
+export {
+    createChat,
+};
 

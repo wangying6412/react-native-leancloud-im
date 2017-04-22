@@ -8,6 +8,10 @@ export default {
     IM_INIT :
     'IM_INIT',
 
+    /** 保存IM对象 */
+    IM_SAVE_IM :
+    'IM_SAVE_IM',
+
     /** 网络请求状态 */
     IM_FETCH_STATE :
     'IM_FETCH_STATE',
@@ -20,9 +24,9 @@ export default {
     IM_STATUS :
     'IM_STATUS',
 
-    /** 创建聊天 */
-    IM_CREATE_CHAT :
-    'IM_CREATE_CHAT',
+    /** 保存conversation */
+    IM_SAVE_CONVERSATION :
+    'IM_SAVE_CONVERSATION',
 
 };
 

@@ -102,7 +102,7 @@ class ListItem extends React.Component{
 
         return (
             <TouchableHighlight
-                onPress = {this.props.onPress && this.props.onPress()}
+                onPress = {this.props.onPress}
             >
                 <View style={[styles.listItem,this.props.style]}>
                     {
