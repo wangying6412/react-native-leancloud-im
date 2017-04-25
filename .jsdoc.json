@@ -4,7 +4,7 @@
         "dictionaries": ["jsdoc"]
     },
     "source": {
-        "excludePattern": "(node_modules/|docs)"
+        "excludePattern": "(node_modules/|docs|/__test__/)"
     },
     "plugins": [
         "plugins/markdown"

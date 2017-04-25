@@ -45,6 +45,7 @@
     "jest": "^19.0.2",
     "minami": "^1.2.3",
     "react-test-renderer": "16.0.0-alpha.6",
+    "redux-mock-store": "^1.2.3",
     "yargs": "^7.0.2"
   },
   "jest": {

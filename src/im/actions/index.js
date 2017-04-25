@@ -8,9 +8,9 @@ import { createAction } from 'redux-actions';
 import AV from 'leancloud-storage';
 import types from './types';
 
-import createIMClient from './createIMClient';
+import { createIMClient } from './createIMClient';
 
-import { createChat } from './createChat.js';
+export { createChat } from './createChat.js';
 
 /**
  * im初始化
@@ -41,7 +41,7 @@ export const imInit = ({appId,appKey,ownerId})=>(dispatch)=>{
         /**
          * 连接到Leancloud
          */
-        dispatch(createIMClient(appId,ownerId)).then(({im,realtime})=>{
+        return dispatch(createIMClient(appId,ownerId)).then(({im,realtime})=>{
 
             dispatch(saveIm(im));
 
@@ -97,8 +97,4 @@ export const imStatus = createAction(types.IM_STATUS);
  * dispatch(fetchState(new Error('找不到用户！'),'createIMClient'));
  */
 export const fetchState = createAction(types.IM_FETCH_STATE,null,(payload,meta)=>meta);
-
-export {
-    createChat,
-};
 

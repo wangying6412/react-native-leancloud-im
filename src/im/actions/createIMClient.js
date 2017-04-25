@@ -25,7 +25,7 @@ import {
  * });
  *
  */
-export default (appId,ownerId)=>(dispatch)=>{
+export const createIMClient = (appId,ownerId)=>(dispatch)=>{
 
     /**
      * 创建实时通讯实例
