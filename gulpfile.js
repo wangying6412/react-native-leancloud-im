@@ -1,8 +1,6 @@
 /**
  * 工具
  *
- * @file gulpfile.js
- * @typedef {Object} task - gulp 任务
  * @external tools
  */
 
@@ -25,9 +23,7 @@ gulp.task(
     /**
      * Gulp任务 : 生成JsDoc文档
      *
-     * @name gulp jsdoc
-     * @function
-     * @memberof external:tools
+     * @function external:tools#gulp jsdoc
      * @example
         $ gulp jsdoc
      */
@@ -43,9 +39,7 @@ gulp.task(
     /**
      * 将scss编译为react native可用的js文件
      *
-     * @name gulp style
-     * @function
-     * @memberof external:tools
+     * @function external:tools#gulp style
      * @example
         $ gulp style
      */
@@ -66,9 +60,7 @@ gulp.task(
     /**
      * 构建js文件，自动添加头部注释及基本结构
      *
-     * @name gulp file
-     * @function
-     * @memberof external:tools
+     * @function external:tools#gulp file
      * @example
      *
      *      $ gulp file --name user.js --desc 用户模块 --cwd
@@ -104,9 +96,7 @@ gulp.task(
     /**
      * 构建模块，自动添加UI.js reducer.js __test__
      *
-     * @name gulp module
-     * @function
-     * @memberof external:tools
+     * @function external:tools#gulp module
      * @example
      *
      *      $ gulp module --name message --desc 消息模块 --cwd
@@ -149,9 +139,7 @@ gulp.task(
 /**
  * 替换模板中的占位字符
  *
- * @name replaceTemplate
- * @function
- * @memberof external:tools
+ * @function external:tools~replaceTemplate
  * @access protected
  * @param {string} name - 文档名或者模块名，不带后缀
  * @param {string} description - 文件描述（可选）
@@ -176,9 +164,7 @@ function replaceTemplate(name,description=''){
 /**
  * 为JS文件插入头部
  *
- * @name insertHeader
- * @function
- * @memberof external:tools
+ * @function external:tools~insertHeader
  * @access protected
  * @param {string} filename - 文件名称
  * @param {string} description - 文件描述（可选）
@@ -192,7 +178,7 @@ function insertHeader(filename,description=''){
     let template = ['/**',
         ' * <%= pkg.description %>',
         ' *',
-        ' * @module <%= pkg.basename %>',
+        ' * @file <%= pkg.filename %>',
     ];
     pkg.authors && template.push(' * @author <%= pkg.authors %>');
     pkg.version && template.push(' * @version v<%= pkg.version %>');

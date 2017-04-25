@@ -1,7 +1,6 @@
 /**
  * TabBar的图标
  *
- * @module TabBarIcon
  * @author lihaitang
  * @version v0.0.1
  */

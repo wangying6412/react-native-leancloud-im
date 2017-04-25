@@ -1,8 +1,10 @@
 /**
- * im 模块
+ * im 主模块，入口模块
  *
- * @module
+ * @file
+ * @module im
  */
+
 import React from 'react';
 import {
     createStore,

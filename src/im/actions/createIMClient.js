@@ -1,5 +1,7 @@
 /**
  * 创建im对象
+ *
+ * @file
  */
 
 import {
@@ -15,7 +17,7 @@ import {
 /**
  * 创建im对象
  *
- * @function actions~createIMClient
+ * @function module:actions#createIMClient
  * @param {string} appId - leancloud的appId
  * @param {string} ownerId - 当前用户的ID
  * @example

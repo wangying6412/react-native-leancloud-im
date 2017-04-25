@@ -1,6 +1,7 @@
 /**
  * dui 设置
- * @module Dui.config
+ *
+ * @memberof module:dui
  */
 
 import {
@@ -14,6 +15,8 @@ const {
 
 /**
  * 默认设置
+ *
+ * @memberof module:dui
  */
 let options = {
 
@@ -31,6 +34,8 @@ let options = {
 
 /**
  * 样式
+ *
+ * @memberof module:dui
  */
 let theme = {
 
@@ -61,9 +66,8 @@ let theme = {
  * 设置dui样式
  *
  * @name setTheme
- * @function
- * @access public
- * @param {Object} _theme - 颜色，尺寸等
+ * @function module:dui.setTheme
+ * @param {theme} _theme - 颜色，尺寸等
  */
 function setTheme(_theme){
     Object.assign(theme,_theme);
@@ -72,9 +76,8 @@ function setTheme(_theme){
 /**
  * dui基础设置
  *
- * @name config
- * @function
- * @param {Object} ops - 设置参数
+ * @function module:dui.config
+ * @param {options} ops - 设置参数
  */
 function config(ops={}){
     Object.assign(options,ops);

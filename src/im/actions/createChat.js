@@ -1,7 +1,7 @@
 /**
  * 创建聊天
  *
- * @module createChat
+ * @file
  */
 
 import { createAction } from 'redux-actions';
@@ -11,8 +11,10 @@ import { imStatus } from './index';
 /**
  * 保存conversation
  *
- * @function actions~saveConversation
- * @param {object} {userId,converSation} - 用户ID及conversation
+ * @function module:actions#saveConversation
+ * @param {object} params - 用户ID及conversationId
+ * @param {(string|number)} params.userId - 要聊天对象的ID
+ * @param {string} params.conversationId
  * @example
  *
         dispatch(saveConversation({
@@ -25,8 +27,8 @@ export const saveConversation = createAction(types.IM_SAVE_CONVERSATION);
 /**
  * 创建聊天
  *
- * @function actions~createChat
- * @param {string||number} userId  - 对方的ID
+ * @function module:actions#createChat
+ * @param {(string|number)} userId  - 对方的ID
  * @param {string} conversationId  - conversation.id
  * @returns {Promise} promise - 返回promise
  */
@@ -91,8 +93,8 @@ export const createChat  = (userId,conversationId)=>(dispatch,$getState)=>{
 /**
  * 创建conversation
  *
- * @function actions~createConversation
- * @param {string||number} userId  - 对方的ID
+ * @function module:actions#createConversation
+ * @param {(string|number)} userId  - 对方的ID
  * @param {string} conversationId  - conversation.id
  * @returns {Promise} promise - 返回promise
  */

@@ -1,7 +1,6 @@
 /**
  * 聊天页面
  *
- * @module Chat
  * @author lihaitang
  * @version v0.0.1
  */

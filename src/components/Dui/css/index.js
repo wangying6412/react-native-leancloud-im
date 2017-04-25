@@ -1,5 +1,5 @@
 /**
- * @module Dui.css
+ * @file Dui.css
  */
 
 import EStyleSheet from 'react-native-extended-stylesheet';
@@ -10,7 +10,7 @@ import RefreshControl from './DuiRefreshControl.style';
 import ListItem from './ListItem.style';
 import Body from './Body.style';
 
-/**
+/*
  * 获取合并后的样式
  *
  * @name getStyles

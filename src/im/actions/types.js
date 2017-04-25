@@ -1,8 +1,9 @@
 /**
  * action types 集合
+ *
+ * @memberof module:actions
  */
-
-export default {
+const TYPES =  {
 
     /** IM初始化 */
     IM_INIT :
@@ -28,6 +29,12 @@ export default {
     IM_SAVE_CONVERSATION :
     'IM_SAVE_CONVERSATION',
 
+    /** 保存消息 */
+    IM_SAVE_MESSAGE :
+    'IM_SAVE_MESSAGE',
+
 };
+
+export default TYPES;
 
 

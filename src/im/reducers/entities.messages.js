@@ -1,7 +1,7 @@
 /**
- * recucers - 存储 conversation
+ * recucers - 存储 消息(messages)
  *
- * @name conversations
+ * @name messages
  * @memberof module:reducers.entities
  */
 
@@ -14,10 +14,10 @@ export default ($state=$initialState, action)=>{
     const { type, payload } = action;
 
     switch(type){
-        case types.IM_SAVE_CONVERSATION:{
-            const { userId, conversation } = payload;
+        case types.IM_SAVE_MESSAGE:{
+            const { cid } = payload;
 
-            return $state.set(userId,{id:conversation.id});
+            return $state.set(cid,payload);
         }
         default :
             return $state;

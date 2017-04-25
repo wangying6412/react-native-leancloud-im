@@ -1,7 +1,7 @@
 /**
  * 展示组件-聊天
  *
- * @module Chat
+ * @file Chat.js
  * @author lihaitang
  * @version v0.0.1
  */

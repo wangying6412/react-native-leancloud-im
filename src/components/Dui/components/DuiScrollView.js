@@ -1,13 +1,11 @@
-/*
-
-    @name           DuiScrollView
-    @file           DuiScrollView.js
-    @author         lihaitang
-    @createAt       2017-03-24 11:10:28
-
+/**
+ * dui#scrollView
+ *
+ * @file
+ * @author         lihaitang
+ * @createAt       2017-03-24 11:10:28
  */
 
-//=======================
 const propTypes = {
 
     dataSource : React.PropTypes.object,
@@ -38,7 +36,6 @@ const propTypes = {
     onInitial : React.PropTypes.func,
 
 };
-//========================
 
 import React from 'react';
 import {
@@ -55,6 +52,11 @@ import {
     options
 } from '../Dui.config';
 
+/**
+ * dui#scrollView
+ *
+ * @class module:dui#ScrollView
+ */
 export default class DuiScrollView extends React.Component{
 
     constructor(props){

@@ -1,9 +1,20 @@
+import React, {
+    PropTypes
+} from 'react';
+import {
+    Text,
+    View,
+    Image,
+    TouchableHighlight,
+} from 'react-native';
+
+import Icon from 'react-native-vector-icons/Ionicons';
+
+import styles from '../css';
+
 /**
  * 单个列表项
  *
- * @module ListItem
- * @author lihaitang
- * @version v0.0.1
  * @example
  * ```
     <ListItem
@@ -23,21 +34,6 @@
     />
  * ```
  */
-
-import React, {
-    PropTypes
-} from 'react';
-import {
-    Text,
-    View,
-    Image,
-    TouchableHighlight,
-} from 'react-native';
-
-import Icon from 'react-native-vector-icons/Ionicons';
-
-import styles from '../css';
-
 class ListItem extends React.Component{
 
     static get propTypes(){
@@ -47,46 +43,79 @@ class ListItem extends React.Component{
         return {
             /**
              * ListItem的标题
+             *
+             * @name propTypes.title
+             * @memberof! ListItem
              */
             title          : stringOrElement,
             /**
              * ListItem 左侧的图标
+             *
+             * @name propTypes.leftIcon
+             * @memberof! ListItem
              */
             leftIcon       : PropTypes.string,
             /**
              * ListItem 左侧的图片，头像之类的
+             *
+             * @name propTypes.leftImage
+             * @memberof! ListItem
              */
             leftImage      : PropTypes.string,
             /**
              * ListItem 右侧的文字，“查看更多”之类的
+             *
+             * @name propTypes.rightText
+             * @memberof! ListItem
              */
             rightText      : stringOrElement,
             /**
              * ListItem 右侧的文字的颜色
+             *
+             * @name propTypes.rightTextColor
+             * @memberof! ListItem
              */
             rightTextColor : PropTypes.string,
             /**
              * ListItem 右侧的图标，默认为向右的箭头,如果设为“none”则不显示图标
+             *
+             * @name propTypes.rightIcon
+             * @memberof! ListItem
              */
             rightIcon      : PropTypes.string,
             /**
              * ListItem 底部的文字
+             *
+             * @name propTypes.bottomText
+             * @memberof! ListItem
              */
             bottomText     : stringOrElement,
             /**
              * ListItem badge就是气泡数字
+             *
+             * @name propTypes.badge
+             * @memberof! ListItem
              */
             badge          : PropTypes.number,
             /**
              * ListItem 大尺寸的列表项
+             *
+             * @name propTypes.legal
+             * @memberof! ListItem
              */
             legal          : PropTypes.bool,
             /**
              * ListItem 点击事件
+             *
+             * @name propTypes.onPress
+             * @memberof! ListItem
              */
             onPress        : PropTypes.func,
             /**
              * ListItem 如果设置了该项，右侧图标会变成复选框
+             *
+             * @name propTypes.checked
+             * @memberof! ListItem
              */
             checked        : PropTypes.bool,
         };

@@ -1,7 +1,6 @@
 /**
  * 根容器组件
  *
- * @module Root
  * @author lihaitang
  * @version v0.0.1
  */

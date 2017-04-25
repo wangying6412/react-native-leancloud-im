@@ -1,7 +1,6 @@
 /**
  * 联系人列表
  *
- * @module Friends
  * @author lihaitang
  * @version v0.0.1
  */

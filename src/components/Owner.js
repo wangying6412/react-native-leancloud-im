@@ -1,7 +1,6 @@
 /**
  * 用户中心
  *
- * @module Owner
  * @author lihaitang
  * @version v0.0.1
  */

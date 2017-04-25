@@ -1,7 +1,6 @@
 /**
  * 最近聊天列表
  *
- * @module ChatList
  * @author lihaitang
  * @version v0.0.1
  */

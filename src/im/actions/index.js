@@ -15,8 +15,11 @@ import { createChat } from './createChat.js';
 /**
  * im初始化
  *
- * @function actions~imInit
- * @param {Object} appId&appKey&ownerId - Leancloud的appId和appKey及用户ID
+ * @function module:actions#imInit
+ * @param {Object} config - Leancloud的appId和appKey及用户ID
+ * @param {string} config.appId - Leancloud的appId
+ * @param {string} config.appKey - Leancloud的appKey
+ * @param {(string|number)} config.ownerId - 用户的ID
  * @example
  *
  * dispatch(imInit({appId:'xxxx',appKey:'xxxxxx',ownerId:1}));
@@ -60,7 +63,7 @@ export const imInit = ({appId,appKey,ownerId})=>(dispatch)=>{
 /**
  * action creator - 保存IM对象
  *
- * @function actions~saveIm
+ * @function module:actions#saveIm
  * @param {Object} payload - im对象
  * @example
  *
@@ -71,8 +74,8 @@ export const saveIm = createAction(types.IM_SAVE_IM);
 /**
  * action creator - im客户端状态，在线、离线等
  *
- * @function actions~imStatus
- * @param {string||Object} payload - 状态，可以是字符串，或者Error对象
+ * @function module:actions#imStatus
+ * @param {(string|number)} payload - 状态，可以是字符串，或者Error对象
  * @example
  *
  * dispatch(imStatus('正在连接服务器'))
@@ -82,8 +85,8 @@ export const imStatus = createAction(types.IM_STATUS);
 /**
  * action-网络请求
  *
- * @function
- * @param {string|error} state - 请求状态：'fetching','refreshing','done',new Error('xx')
+ * @function module:actions#fetchState
+ * @param {(string|error)} state - 请求状态：'fetching','refreshing','done',new Error('xx')
  * @param {string} apiName - api名称，请求哪个接口的状态
  * @example
  *

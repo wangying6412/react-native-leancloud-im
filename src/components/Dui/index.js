@@ -1,7 +1,8 @@
 /**
  * dui - ui库
  *
- * @module
+ * @file
+ * @module dui
  */
 
 //import Body from './Body';

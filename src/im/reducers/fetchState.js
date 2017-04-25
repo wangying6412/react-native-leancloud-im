@@ -1,7 +1,7 @@
 /**
  * reducer - 网络请求状态
  *
- * @module reducer~fetchState
+ * @file
  */
 
 import Immutable from 'immutable';
@@ -28,6 +28,12 @@ export default function fetchState($state=$initialState,action){
     } = action;
 
     switch(type){
+
+        /**
+         * reducer - 网络请求状态
+         *
+         * @memberof module:reducers
+         */
         case types.IM_FETCH_STATE:{
             const apiName = meta;
             if(error){

@@ -1,6 +1,7 @@
 /**
  * rootReducer
  *
+ * @file
  * @module reducers
  */
 
@@ -12,7 +13,10 @@ import fetchState from './fetchState';
 import imClient from './imClient';
 import imStatus from './imStatus';
 
+
 import conversations from './entities.conversations';
+import messages from './entities.messages';
+
 
 //import types from '../actions/types';
 
@@ -21,9 +25,13 @@ let testReducer = (state=testState)=>state;
 
 /**
  * 数据项统一存储
+ *
+ * @name entities
+ * @memberof module:reducers
  */
 const entities = combineReducers({
     conversations,
+    messages,
 });
 
 /**

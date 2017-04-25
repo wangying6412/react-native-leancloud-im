@@ -1,7 +1,7 @@
 /**
  * imState 存储im的state
  *
- * @module
+ * @file
  */
 
 import types from '../actions/types';
@@ -14,6 +14,8 @@ export default (state=null, action)=>{
 
         /**
          * reducer im客户端状态，在线、离线等
+         *
+         * @memberof module:reducers
          */
         case types.IM_STATUS:{
             const statusText = error ? payload.message : payload;

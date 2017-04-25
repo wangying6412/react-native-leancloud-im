@@ -1,9 +1,9 @@
-/*
-
-    @name           DuiRefreshControl
-    @author         lihaitang
-    @createAt       2017-03-24 11:10:28
-
+/**
+ * dui#scrollView#刷新控制器
+ *
+ * @memberof module:dui
+ * @author         lihaitang
+ * @createAt       2017-03-24 11:10:28
  */
 
 import React from 'react';
