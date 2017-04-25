@@ -1,7 +1,6 @@
 /**
  * rootReducer
  *
- * @file
  * @module reducers
  */
 

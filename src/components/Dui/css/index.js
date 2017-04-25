@@ -1,7 +1,3 @@
-/**
- * @file Dui.css
- */
-
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { theme } from '../Dui.config.js';
 import base from './base';

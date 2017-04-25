@@ -1,7 +1,6 @@
 /**
  * reducer - 网络请求状态
  *
- * @file
  */
 
 import Immutable from 'immutable';

@@ -1,7 +1,6 @@
 /**
  * im.config reducer 存储im设置信息
  *
- * @file
  */
 
 import Immutable from 'immutable';

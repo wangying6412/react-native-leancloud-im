@@ -1,9 +1,7 @@
 /**
- * dui#scrollView
+ * dui#scrollView.propTypes
  *
- * @file
- * @author         lihaitang
- * @createAt       2017-03-24 11:10:28
+ * @memberof! ScrollView
  */
 
 const propTypes = {
@@ -55,7 +53,7 @@ import {
 /**
  * dui#scrollView
  *
- * @class module:dui#ScrollView
+ * @class DuiScrollView
  */
 export default class DuiScrollView extends React.Component{
 

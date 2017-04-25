@@ -1,7 +1,6 @@
 /**
  * imState 存储 imClient 对象
  *
- * @file
  */
 
 import types from '../actions/types';
@@ -15,7 +14,7 @@ export default (state=null, action)=>{
         /**
          * reducer 保存im对象
          *
-         * @memberof module:reducers
+         * @memberof! module:reducers
          */
         case types.IM_SAVE_IM:{
             const imClient = payload;

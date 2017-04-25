@@ -1,9 +1,9 @@
 /**
  * 展示组件-聊天
  *
- * @file Chat.js
  * @author lihaitang
  * @version v0.0.1
+ * @private
  */
 
 import React from 'react';

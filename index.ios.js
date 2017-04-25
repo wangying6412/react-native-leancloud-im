@@ -1,7 +1,6 @@
 /**
  * IOS 入口文件
  *
- * @file index.ios.js
  */
 
 import {

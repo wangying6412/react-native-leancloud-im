@@ -1,7 +1,5 @@
 /**
  * 创建聊天
- *
- * @file
  */
 
 import { createAction } from 'redux-actions';

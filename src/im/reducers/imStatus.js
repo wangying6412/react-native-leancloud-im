@@ -1,7 +1,6 @@
 /**
  * imState 存储im的state
  *
- * @file
  */
 
 import types from '../actions/types';
