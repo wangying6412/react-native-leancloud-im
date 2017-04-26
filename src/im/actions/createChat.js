@@ -35,7 +35,7 @@ export const createChat  = (userId,conversationId)=>(dispatch,$getState)=>{
     const ownerId = $getState().getIn(['config','ownerId']);
     const im = $getState().get('imClient');
 
-    if(userId === ownerId){
+    if(String(userId) === String(ownerId)){
         return Promise.reject(new Error('创建聊天失败，您不能和自己聊天。'));
     }
 
@@ -44,49 +44,52 @@ export const createChat  = (userId,conversationId)=>(dispatch,$getState)=>{
     if(conversationId){
         return _fn(conversationId);
     }else{
-
         const conversationId = $getState().getIn(['entities','conversation',userId,'id']);
 
         if(conversationId){
             return _fn(conversationId);
         }else{
-            return _findConversationInRemote();
+            return _findConversationInRemote(userId,im,dispatch);
         }
     }
 
-    /**
-     * 从远程按userId查找conversation
-     *
-     * @private
-     * @returns {Promise} promise - 返回promise
-     */
-    function _findConversationInRemote(){
-
-        const query = im.getQuery();
-        return query.find().then((items)=>{
-            let remoteConversation = items.find((obj)=>{
-                let str = ',' + obj.members.join(',') + ',';
-                return new RegExp(',' + userId + ',').test(str);
-            });
-
-            if(remoteConversation){
-
-                dispatch(saveConversation({
-                    userId,
-                    conversation : remoteConversation
-                }));
-
-                return _fn(remoteConversation.id);
-            }else{
-                console.log('没有找到conversation，开始新建');
-                return _fn(null);
-            }
-
-        }).catch((err)=>{
-            return Promise.reject(err);
-        });
-    }
 };
+
+/**
+ * 从远程按userId查找conversation
+ *
+ * @private
+ * @param {(string|number)} userId - 对方的ID
+ * @param {Object} im - im leancloudSDK包装的对象
+ * @param {func} dispatch - dispatch
+ * @returns {Promise} promise - 返回promise
+ */
+export function _findConversationInRemote(userId,im,dispatch){
+
+    const query = im.getQuery();
+    return query.find().then((items)=>{
+        let remoteConversation = items.find((obj)=>{
+            let str = ',' + obj.members.join(',') + ',';
+            return new RegExp(',' + userId + ',').test(str);
+        });
+
+        if(remoteConversation){
+
+            dispatch(saveConversation({
+                userId,
+                conversation : remoteConversation
+            }));
+
+            return dispatch(createConversation(userId,remoteConversation.id));
+        }else{
+            //console.log('没有找到conversation，开始新建');
+            return dispatch(createConversation(userId,null));
+        }
+
+    }).catch((err)=>{
+        return Promise.reject(err);
+    });
+}
 
 /**
  * 创建conversation
@@ -95,6 +98,7 @@ export const createChat  = (userId,conversationId)=>(dispatch,$getState)=>{
  * @param {(string|number)} userId  - 对方的ID
  * @param {string} conversationId  - conversation.id
  * @returns {Promise} promise - 返回promise
+ * @private
  */
 export const createConversation = (userId,conversationId)=>(dispatch,$getState)=>{
 

@@ -29,7 +29,7 @@ gulp.task(
      */
     ()=>{
         const config = require(Path.join(__dirname,'./.jsdoc.json'));
-        gulp.src(['README.md', './gulpfile.js', './index.ios.js', './src/**/*.js','!./src/**/__test__/**'], {read: false})
+        gulp.src(['README.md', './gulpfile.js', './index.ios.js', './src/**/*.js','!./src/**/__test__/**','!./src/**/__mock__/**'], {read: false})
             .pipe(jsdoc(config));
     }
 );

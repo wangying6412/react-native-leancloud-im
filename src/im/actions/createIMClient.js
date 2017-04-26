@@ -26,6 +26,8 @@ import {
  *
  */
 export const createIMClient = (appId,ownerId)=>(dispatch)=>{
+    if(!appId)throw new Error('createIMClient必须有appId');
+    if(!ownerId)throw new Error('createIMClient必须有ownerId');
 
     /**
      * 创建实时通讯实例
@@ -38,7 +40,8 @@ export const createIMClient = (appId,ownerId)=>(dispatch)=>{
     dispatch(fetchState('fetching','createIMClient'));
 
     // 用用户ID作为clientId，获取 IMClient 对象实例
-    return realtime.createIMClient(String(ownerId)).then(function(im){
+    return realtime.createIMClient(String(ownerId))
+        .then(function(im){
 
         dispatch(fetchState('done','createIMClient'));
 
