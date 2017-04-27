@@ -25,6 +25,10 @@ const TYPES =  {
     IM_STATUS :
     'IM_STATUS',
 
+    /** IM客户端状态 - 是否在聊天 */
+    IM_CHATING :
+    'IM_CHATING',
+
     /** 保存conversation */
     IM_SAVE_CONVERSATION :
     'IM_SAVE_CONVERSATION',

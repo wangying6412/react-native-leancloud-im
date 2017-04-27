@@ -22,9 +22,9 @@ class Chat extends React.Component{
     }
 
     componentDidMount(){
-        const { userId, conversationId, dispatch, createChat } = this.props;
+        const { members, conversationId, dispatch, createChat } = this.props;
 
-        dispatch(createChat(userId,conversationId));
+        dispatch(createChat(members,conversationId));
     }
 
     render(){

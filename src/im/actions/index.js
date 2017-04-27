@@ -81,6 +81,7 @@ export const saveIm = createAction(types.IM_SAVE_IM);
  * dispatch(imStatus('正在连接服务器'))
  */
 export const imStatus = createAction(types.IM_STATUS);
+export const imChating = createAction(types.IM_CHATING);
 
 /**
  * action-网络请求

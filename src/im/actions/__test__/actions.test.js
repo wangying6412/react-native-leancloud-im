@@ -20,11 +20,17 @@ test('测试action - saveIm',()=>{
 test('测试action - imStatus',()=>{
 
     const { imStatus } = require('../index.js');
+    const { imChating } = require('../index.js');
+
     expect(imStatus('bbb')).toEqual({
         type : types.IM_STATUS,
         payload : 'bbb'
     });
 
+    expect(imChating({ chating : true })).toEqual({
+        type : types.IM_CHATING,
+        payload : { chating : true }
+    });
 });
 
 test('测试action - fetchState',()=>{
@@ -42,13 +48,12 @@ test('测试action - fetchState',()=>{
 test('测试action - saveConversation',()=>{
     const { saveConversation } = require('../createChat.js');
     expect(saveConversation({
-        userId : '123',
-        conversation : { id : 'abc' }
+        id : 'abc',
+        aa : 'bb',
     })).toEqual({
         type : types.IM_SAVE_CONVERSATION,
         payload : {
-            userId : '123',
-            conversation : { id : 'abc' }
+            id : 'abc'
         }
     });
 });

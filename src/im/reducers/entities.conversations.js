@@ -15,13 +15,11 @@ export default ($state=$initialState, action)=>{
 
     switch(type){
         case types.IM_SAVE_CONVERSATION:{
-            const { userId, conversation } = payload;
-
-            return $state.set(userId,{id:conversation.id});
+            const conversation = payload;
+            return $state.mergeIn([conversation.id],conversation);
         }
         default :
             return $state;
     }
-
 
 };

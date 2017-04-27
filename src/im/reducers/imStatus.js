@@ -1,11 +1,17 @@
 /**
- * imState 存储im的state
+ * imState 存储im的$state
  *
  */
 
 import types from '../actions/types';
+import Immutable from 'Immutable';
 
-export default (state=null, action)=>{
+const $initialState = Immutable.fromJS({
+    chating : false,
+    statusText : null,
+});
+
+export default ($state=$initialState, action)=>{
 
     const { type, payload, error } = action;
 
@@ -17,13 +23,24 @@ export default (state=null, action)=>{
          * @memberof module:reducers
          */
         case types.IM_STATUS:{
-            const statusText = error ? payload.message : payload;
+            const statusText = error ?
+                payload.message : payload;
 
-            return statusText;
+            return $state.set('statusText',statusText);
+        }
+
+        /**
+         * reducer im客户端状态 是否正在聊天
+         *
+         * @memberof module:reducers
+         */
+        case types.IM_CHATING:{
+
+            return $state.set('chating',payload);
         }
 
         default :
-            return state;
+            return $state;
     }
 };
 
