@@ -10,6 +10,7 @@ import Immutable from 'immutable';
 import imInit from './imInit';
 import fetchState from './fetchState';
 import imClient from './imClient';
+import realtime from './realtime';
 import imStatus from './imStatus';
 
 
@@ -53,6 +54,7 @@ const rootReducer = combineReducers({
     entities,
     fetchState,
     imClient,
+    realtime,
     containers,
     components,
 });

@@ -15,9 +15,17 @@ export default ($state=$initialState, action)=>{
 
     switch(type){
         case types.IM_SAVE_MESSAGE:{
-            const { cid } = payload;
+            const { id } = payload;
 
-            return $state.set(cid,payload);
+            return $state.set(id,payload);
+        }
+        case types.IM_SAVE_MESSAGES:{
+            let {  messages } = payload;
+            messages = messages.reduce((obj,message)=>{
+                return Object.assign(obj,{ [message.id] : message });
+            },{});
+
+            return $state.merge(Immutable.fromJS(messages));
         }
         default :
             return $state;

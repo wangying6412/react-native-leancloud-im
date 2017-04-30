@@ -13,6 +13,10 @@ const TYPES =  {
     IM_SAVE_IM :
     'IM_SAVE_IM',
 
+    /** 保存Realtime对象 */
+    IM_SAVE_REALTIME :
+    'IM_SAVE_REALTIME',
+
     /** 网络请求状态 */
     IM_FETCH_STATE :
     'IM_FETCH_STATE',
@@ -36,6 +40,16 @@ const TYPES =  {
     /** 保存消息 */
     IM_SAVE_MESSAGE :
     'IM_SAVE_MESSAGE',
+    IM_SAVE_MESSAGES :
+    'IM_SAVE_MESSAGES',
+
+    /** 保存conversation迭代器 */
+    IM_SAVE_ITERATOR :
+    'IM_SAVE_ITERATOR',
+
+    /** 注册自定义对象 */
+    IM_REGISTER_CUSTOM_MESSAGE :
+    'IM_REGISTER_CUSTOM_MESSAGE',
 
 };
 

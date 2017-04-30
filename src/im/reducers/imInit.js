@@ -10,6 +10,7 @@ const $initialState = Immutable.fromJS({
     appId : null,
     appKey : null,
     ownerId : null,
+    messagesLimit : 50
 });
 
 export default ($state=$initialState,action)=>{

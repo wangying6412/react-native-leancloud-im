@@ -31,11 +31,11 @@ export const saveConversation = createAction(types.IM_SAVE_CONVERSATION,(convers
         id,
         members,
         creator,
-        lastMessage,
         createdAt,
         updatedAt,
         lastMessageAt,
-        unreadMessagesCount
+        unreadMessagesCount,
+        lastMessage : lastMessage ? lastMessage.id : null,
     };
 });
 

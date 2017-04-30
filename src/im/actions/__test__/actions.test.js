@@ -44,14 +44,26 @@ test('测试action - fetchState',()=>{
 
 });
 
-
 test('测试action - saveConversation',()=>{
     const { saveConversation } = require('../createChat.js');
     expect(saveConversation({
         id : 'abc',
         aa : 'bb',
-    })).toEqual({
+    })).toMatchObject({
         type : types.IM_SAVE_CONVERSATION,
+        payload : {
+            id : 'abc'
+        }
+    });
+});
+
+test('测试action - saveRealtime',()=>{
+    const { saveRealtime } = require('../createIMClient.js');
+    expect(saveRealtime({
+        id : 'abc',
+        aa : 'bb',
+    })).toMatchObject({
+        type : types.IM_SAVE_REALTIME,
         payload : {
             id : 'abc'
         }

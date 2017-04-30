@@ -12,6 +12,7 @@ test('reducer-imInit',()=>{
         appId : 'aaa',
         appKey : 'bbb',
         ownerId : '123',
+        messagesLimit : 50,
     };
     const action = createAction(types.IM_INIT);
     expect(imInit(undefined,action(ops)).toJS()).toEqual(ops);
@@ -21,6 +22,12 @@ test('reducer-imClient',()=>{
     const imClient = require('../imClient.js').default;
     const action = createAction(types.IM_SAVE_IM);
     expect(imClient(undefined,action({a:1}))).toEqual({a:1});
+});
+
+test('reducer-realtime',()=>{
+    const realtime = require('../realtime.js').default;
+    const action = createAction(types.IM_SAVE_REALTIME);
+    expect(realtime(undefined,action({a:1}))).toEqual({a:1});
 });
 
 test('reducer-imStatus',()=>{
@@ -74,7 +81,6 @@ describe('reducer-fetchState',()=>{
                 isFetching : false,
                 isRefresing : false,
                 didInvalidate : false,
-                lastUpdated : Date.now(),
             });
     });
 });
@@ -93,14 +99,28 @@ describe('测试reducer.entities.conversations',()=>{
 describe('测试reducer.entities.messages',()=>{
     const reducer_messages = require('../entities.messages.js').default;
     const action = createAction(types.IM_SAVE_MESSAGE);
-    expect(reducer_messages(undefined,action({cid:'aa'})).toJS())
+    expect(reducer_messages(undefined,action({id:'aa'})).toJS())
         .toEqual({
             aa : {
-                cid : 'aa'
+                id : 'aa'
             }
         });
 });
 
+describe('测试reducer.customMessages',()=>{
+    const customMessages = require('../customMessages.js').default;
+    const action = createAction(types.IM_REGISTER_CUSTOMMESSAGE);
+
+    expect(customMessages(undefined,action({
+        type : 123,
+        render : ()=>{},
+        instance : {}
+    })).get(123).toJS())
+        .toMatchObject({
+            type : 123,
+            instance : {}
+        });
+});
 
 
 

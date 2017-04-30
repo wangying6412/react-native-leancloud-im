@@ -13,6 +13,8 @@ import {
     bindActionCreators,
 } from 'redux';
 
+import event from './plugs/event';
+
 import rootReducer from './reducers';
 import thunk from 'redux-thunk';
 import {persistStore, autoRehydrate} from 'redux-persist-immutable';
@@ -29,6 +31,8 @@ import {
 import {
     Provider
 } from 'react-redux';
+
+const Event = new event();
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -49,15 +53,21 @@ const store = createStore(rootReducer,composeEnhancers(
  * 持久化存储
  */
 persistStore(store,{
-    blacklist : ['imClient'],
+    blacklist : ['realtime','imClient','customMessages','iterator'],
     storage: AsyncStorage
 });
 
 const { dispatch } = store;
 
+/**
+ * 设定出口
+ */
 export const init = bindActionCreators(imInit,dispatch);
-
 export const Chat = (props)=><Provider store={store}><ChatComponent {...props} /></Provider>;
+
+const defaults = {};
+export default defaults;
+Event.pack(defaults);
 
 
 
