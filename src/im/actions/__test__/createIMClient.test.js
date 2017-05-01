@@ -1,9 +1,6 @@
 import 'react';
 
-import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-const mockStore = configureStore([thunk]);
-const store = mockStore({});
+import { store } from './mockStore';
 const { dispatch } = store;
 
 const appId = 'aaa', ownerId = 1;

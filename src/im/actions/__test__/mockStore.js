@@ -19,6 +19,7 @@ export const mockFind = jest.fn(()=>Promise.resolve({
 }));
 export const mockCreateConversation = jest.fn(()=>Promise.resolve(mockConversation));
 export const mockGetConversation = jest.fn(()=>Promise.resolve(mockConversation));
+export const realtime = { register : jest.fn() };
 export const store = mockStore(
     Immutable.fromJS({
         config : {
@@ -26,11 +27,13 @@ export const store = mockStore(
             appId : 'aaa',
             appKey : 'bbb'
         },
+        customMessages : Immutable.Map(),
     })
     .set('imClient',{
         getQuery : jest.fn(()=>({ find : mockFind  })),
         createConversation : mockCreateConversation,
         getConversation : mockGetConversation,
     })
+    .set('realtime',realtime)
 );
 

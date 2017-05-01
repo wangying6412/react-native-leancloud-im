@@ -10,7 +10,6 @@ import types from './types';
 
 import { createIMClient } from './createIMClient';
 
-export { createChat } from './createChat.js';
 
 /**
  * im初始化
@@ -98,4 +97,39 @@ export const imChating = createAction(types.IM_CHATING);
  * dispatch(fetchState(new Error('找不到用户！'),'createIMClient'));
  */
 export const fetchState = createAction(types.IM_FETCH_STATE,null,(payload,meta)=>meta);
+
+
+
+/**
+ * 设定出口
+ */
+import { saveMessage,saveMessages } from './saveMessages';
+import { createChat } from './createChat';
+import { sendMessage } from './sendMessage';
+export {
+    saveMessage,
+    createChat,
+    sendMessage,
+    saveMessages,
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
