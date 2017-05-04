@@ -20,7 +20,8 @@ init({
 
 const AppRouters = StackNavigator(Router);
 
-export default AppRouters;
+import React from 'react';
+export default ()=><AppRouters onNavigationStateChange={null} />;
 
 
 

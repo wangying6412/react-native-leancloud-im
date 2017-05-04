@@ -1,0 +1,130 @@
+/**
+ * im 输入框样式
+ */
+
+@import '../../components/Dui/css/base.scss';
+
+$inputerHeight : 40;
+$inputerBackground : #f5f4f6;
+%button {
+    height: 40px;
+    background-color: #FFF;
+    justify-content: center;
+    align-items: center;
+}
+.im_inputerWrap {
+    background-color: $inputerBackground;
+}
+.im_inputerBar {
+    min-height: $inputerHeight;
+    border-top: 1px solid #d7d7d9;
+    border-width: $onePx;
+    padding: 3px #{'$spacing*0.5'};
+    flex-direction: row;
+    align-items: center;
+}
+.im_inputerBtn {
+    $btnSize : $inputerHeight - 12;
+    width: $btnSize;
+    height: $btnSize;
+    border-radius: ($btnSize)/2;
+    border: 1px solid #7f8389;
+    border-width: $onePx;
+    margin-right: $spacing;
+    overflow: hidden;
+    @extend .center;
+}
+.im_inputerBtn_icon {
+    color: #7f8389;
+    font-size: 20px;
+}
+.im_inputerBtn_icon_faceWrap {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    @extend .center;
+}
+.im_inputerBtn_icon_face {
+    @extend .im_inputerBtn_icon;
+    font-size: 34px;
+    margin-left: -4px;
+    margin-top: 1px;
+}
+.im_inputerBtn_icon_plus {
+    @extend .im_inputerBtn_icon;
+    font-size: 30px;
+    margin-top: 1px;
+}
+.im_inputerBtn_icon_keyboard {
+    @extend .im_inputerBtn_icon;
+    margin-top: 1px;
+}
+.im_inputer_inputWrap {
+    flex: 1;
+    border: 1px solid #DDD;
+    border-width: $onePx;
+    height: $inputerHeight - 10;
+    background-color: #FFF;
+    margin-right: $spacing;
+    padding-left: #{'$spacing*0.5'};
+    padding-right: #{'$spacing*0.5'};
+    border-radius: 5px;
+}
+.im_inputer_overLay {
+    background-color: transparent;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+.im_inputer_input {
+    flex: 1;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: $inputerHeight - 10;
+    background-color: transparent;
+}
+.im_inputerPlus {
+    border-top: 1px solid #d7d7d9;
+    border-width: $onePx;
+    padding-left: $spacing;
+    padding-right: $spacing;
+    overflow: hidden;
+}
+.im_inputerPlus_item {
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+.im_inputerPlus_iconWrap {
+    background-color: #FFF;
+    border: 1px solid #dcdcdd;
+    border-width: $onePx;
+    border-radius: 10px;
+    margin-top: $spacing;
+    margin-bottom: #{'$spacing*0.5'};
+    @extend .center;
+}
+.im_inputerPlus_icon {
+    color: #6f7378;
+    font-size: 40px;
+}
+.im_inputerPlus_font {
+    color: #888888;
+    margin-bottom: $spacing;
+}
+.im_faceSendBtnWrap {
+    background-color: rgba(0,0,0,0.1);
+}
+.im_faceSendBtn {
+    flex: 1;
+    @extend %button;
+    background-color: $blue;
+    height: 30px;
+}
+
+
+
+

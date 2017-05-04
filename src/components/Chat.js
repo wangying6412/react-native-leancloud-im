@@ -34,7 +34,7 @@ class ChatComponent extends React.Component{
         const userId = this.props.navigation.state.params.userId;
 
         return(
-            <Chat userId={userId} />
+            <Chat members={[userId]} />
         );
     }
 }

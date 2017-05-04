@@ -70,7 +70,7 @@ let theme = {
  * @param {theme} _theme - 颜色，尺寸等
  */
 function setTheme(_theme){
-    Object.assign(theme,_theme);
+    return Object.assign(theme,_theme);
 }
 
 /**
@@ -85,8 +85,8 @@ function config(ops={}){
 
 export default config;
 export {
-    setTheme,
     options,
+    setTheme,
     theme,
 };
 

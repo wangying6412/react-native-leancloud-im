@@ -8,8 +8,11 @@
 
 import React from 'react';
 import {
-    Text,
+    ScrollView,
+    View,
 } from 'react-native';
+
+import Inputer from './Inputer.js';
 
 class Chat extends React.Component{
 
@@ -29,7 +32,10 @@ class Chat extends React.Component{
 
     render(){
         return(
-            <Text> Chat - 展示组件-聊天 </Text>
+            <View style={{ height : '100%' }}>
+                <ScrollView style={{flex:1}} />
+                <Inputer />
+            </View>
         );
     }
 }

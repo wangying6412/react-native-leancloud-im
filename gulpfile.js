@@ -44,14 +44,14 @@ gulp.task(
         $ gulp style
      */
     ()=>{
-        return watch('./src/components/Dui/css/*.scss',{ ignoreInitial: false  })
+        return watch(['./src/components/Dui/css/*.scss','./src/im/css/*.scss'],{ ignoreInitial: false,base:'./src'  })
             .pipe(plumber())
             .pipe(sass())
             .pipe(reactNativeStylesheetCss({
                 withExtendedStyleSheet: false,
                 outputPlainObject: true,
             }))
-            .pipe(gulp.dest('./src/components/Dui/css/'));
+            .pipe(gulp.dest('./src'));
     }
 );
 
@@ -178,7 +178,7 @@ function insertHeader(filename,description=''){
     let template = ['/**',
         ' * <%= pkg.description %>',
         ' *',
-        ' * @file <%= pkg.filename %>',
+        //' * @file <%= pkg.filename %>',
     ];
     pkg.authors && template.push(' * @author <%= pkg.authors %>');
     pkg.version && template.push(' * @version v<%= pkg.version %>');

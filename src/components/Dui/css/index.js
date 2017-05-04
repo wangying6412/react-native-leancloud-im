@@ -12,13 +12,18 @@ import Body from './Body.style';
  * @name getStyles
  * @function
  */
-export const getStyles = ()=>Object.assign({}, theme, base,
+const getStyles = ()=>Object.assign({}, theme, base,
     RefreshControl,
     ListItem,
     Body
 );
 
 EStyleSheet.build({});
+
+export {
+    base,
+    getStyles,
+};
 
 export default EStyleSheet.create(getStyles());
 

@@ -52,6 +52,8 @@ export const createChat  = (members,conversationId)=>(dispatch,$getState)=>{
     const ownerId = $getState().getIn(['config','ownerId']);
     const im = $getState().get('imClient');
 
+    members =members.map(id=>String(id));
+
     if(Immutable.List(members).contains(ownerId)){
         return Promise.reject(new Error('创建聊天失败，您不能和自己聊天。'));
     }

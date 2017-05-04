@@ -19,6 +19,8 @@ import config,{
     theme,
 } from './Dui.config.js';
 
+import css from './css';
+
 export {
     Body,
     ScrollView,
@@ -26,6 +28,8 @@ export {
 
     config,
     options,
+
     theme,
     setTheme,
+    css,
 };

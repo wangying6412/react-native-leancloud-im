@@ -4,7 +4,7 @@
  */
 
 import types from '../actions/types';
-import Immutable from 'Immutable';
+import Immutable from 'immutable';
 
 const $initialState = Immutable.fromJS({
     chating : false,

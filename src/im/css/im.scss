@@ -1,0 +1,128 @@
+/*
+ * im组件主要样式
+ */
+
+@import '../../components/Dui/css/base.scss';
+
+$im_avatarWidth : 40;
+$im_itemBackground : #00ff00;
+%im_item_border {
+    border: 1px solid #f1f1f1;
+    border-width: $onePx;
+}
+.im_itemWrap {
+    margin-bottom: $spacing;
+    flex-direction: row;
+    padding: $spacing;
+}
+.im_itemWrap_right {
+    @extend .im_itemWrap;
+    flex-direction: row-reverse;
+}
+.im_itemAvatarImage {
+    flex: 0;
+    width: $im_avatarWidth;
+    height: $im_avatarWidth;
+}
+.im_itemAvatar {
+    width: $im_avatarWidth;
+    height: $im_avatarWidth;
+    @extend %im_item_border;
+}
+.im_itemContent {
+    min-height: $im_avatarWidth;
+    border-radius: 5px;
+    margin-left: $spacing;
+    margin-right: 100px;
+    background-color: #FFF;
+    @extend %im_item_border;
+}
+.im_itemContent_right {
+    @extend .im_itemContent;
+    background-color: $im_itemBackground;
+    margin-left: 100px;
+    margin-right: $spacing;
+}
+.im_itemCornerWrap {
+    width: $spacing;
+    height: #{'$spacing*2'};
+    overflow: hidden;
+    position: absolute;
+    left: - ( $spacing );
+    top : $spacing;
+}
+.im_itemCornerWrap_right {
+    @extend .im_itemCornerWrap;
+    right: - ( $spacing - 1px );
+    left: initial;
+}
+.im_itemCorner {
+    width : #{'$spacing*2'};
+    height : #{'$spacing*2'};
+    margin-left : 8px;
+    border-radius : 2px;
+    background-color : #FFF;
+    @extend %im_item_border;
+}
+.im_itemCorner_right {
+    @extend .im_itemCorner;
+    background-color: $im_itemBackground;
+}
+.im_itemTextBox {
+    padding: $spacing;
+}
+.im_itemImage {
+    border-radius: 3px;
+    margin: 2px;
+}
+.im_itemLocation_image {
+    border-radius: 0 0 6px 6px;
+    width: 210px;
+    height: 70px;
+}
+.im_itemLocation_text {
+    width: 210px;
+    background-color: #FFF;
+    border-radius: 5px 5px 0 0;
+    padding: #{'$spacing*0.5'};
+}
+.im_itemLocation_text_addr {
+    font-weight: bold;
+    margin-bottom: #{'$spacing*0.5'};
+}
+.im_status {
+    padding: $spacing;
+    @extend .row;
+    @extend .center;
+}
+.im_statusLoadingIcon {
+    margin-right: #{'$spacing*0.5'};
+}
+.im_statusText {
+    color: $gray;
+}
+.im_loadBtn {
+    flex: 0;
+    margin-top: $spacing;
+    margin-bottom: #{'$spacing*2'};
+    align-self: center;
+    padding: 0 $spacing;
+}
+.im_item_time {
+    position: absolute;
+    right: 0;
+    bottom: -15px;
+    background-color: transparent;
+}
+.im_item_time_right {
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    background-color: transparent;
+}
+.im_item_time_text {
+    color: $gray;
+    font-size: 12px;
+    background-color: transparent;
+    white-space: nowrap;
+}
