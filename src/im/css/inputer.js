@@ -165,7 +165,6 @@ module.exports = {
         "borderTopWidth": 1,
         "borderStyle": "solid",
         "borderTopColor": "#d7d7d9",
-        "borderWidth": "$onePx",
         "paddingLeft": "$spacing",
         "paddingRight": "$spacing",
         "overflow": "hidden"

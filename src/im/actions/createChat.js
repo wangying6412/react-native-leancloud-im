@@ -79,6 +79,7 @@ export const createChat  = (members,conversationId)=>(dispatch,$getState)=>{
     function _cb(conversation){
         dispatch(imChating(true));
         dispatch(saveConversation(conversation));
+        return Promise.resolve(conversation);
         //设为已读
         //conversation.markAsRead().then(IMList.save).catch(console.log);
     }

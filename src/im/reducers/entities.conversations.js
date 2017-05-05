@@ -32,13 +32,24 @@ export default ($state=$initialState, action)=>{
     switch(type){
 
         case types.IM_SAVE_CONVERSATION:{
-            const conversation = payload;
-            return $state.mergeIn([conversation.id],conversation);
+            const $conversation = $initialStateItem.merge(payload);
+            return $state.mergeIn([$conversation.get('id')],$conversation);
+        }
+
+        case types.IM_SAVE_MESSAGE:{
+
+            let { cid,guid } = payload;
+
+            if(cid){
+                return $state.updateIn([cid,'messages'],($messages)=>$messages.add(guid));
+            }else{
+                return $state;
+            }
         }
 
         case types.IM_SAVE_MESSAGES:{
             let { cid, messages, done } = payload;
-            messages = messages.map(message=>message.id);
+            messages = messages.map(message=>message.guid);
 
             return $state
                 .mergeIn([cid,'messages'],messages)

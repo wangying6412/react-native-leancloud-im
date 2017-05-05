@@ -1,5 +1,7 @@
 
 import { fetchState } from './index.js';
+import { saveMessage } from './index.js';
+import Mock from 'mockjs';
 
 /**
  * 发送消息
@@ -16,11 +18,18 @@ export const sendMessage = ({message,conversation,pushData})=>(dispatch,$getStat
     if(!conversation)throw new Error('发送消息失败，没有找到conversation对象。');
 
     const ownerId = $getState().getIn(['config','ownerId']);
+    const guid = Mock.Random.guid();
 
-    dispatch(fetchState('fetching','sendMessage'));
+    const attr = message.getAttributes() || {};
+    !attr.guid && message.setAttributes({
+        guid,
+    });
+
+    dispatch(saveMessage(message));
+    dispatch(fetchState('fetching',{apiName:'sendMessage',guid}));
     return conversation.send(message,{
         transient : message.type === 1,
-        reciept : message.type < 1,
+        receipt : message.type < 1,
         pushData : {
             alert    : pushData || '您有一条新的消息',
             badge    : 'Increment',
@@ -29,12 +38,12 @@ export const sendMessage = ({message,conversation,pushData})=>(dispatch,$getStat
             from     : String(ownerId),
         },
     }).then((d)=>{
-        dispatch(fetchState('done','sendMessage'));
+        dispatch(fetchState('done',{apiName:'sendMessage',guid:d.getAttributes().guid}));
+        dispatch(saveMessage(d));
         Promise.resolve(d);
     }).catch((err)=>{
-        dispatch(fetchState(new Error('发送消息失败。'),'sendMessage'));
+        dispatch(fetchState(new Error('发送消息失败。'),{apiName:'sendMessage',guid}));
         Promise.reject(err);
     });
-
 };
 

@@ -12,7 +12,7 @@ import {
     View,
 } from 'react-native';
 
-import Inputer from './Inputer.js';
+import Inputer from '../containers/Inputer.js';
 
 class Chat extends React.Component{
 
@@ -25,9 +25,8 @@ class Chat extends React.Component{
     }
 
     componentDidMount(){
-        const { members, conversationId, dispatch, createChat } = this.props;
 
-        dispatch(createChat(members,conversationId));
+        this.props._createChat();
     }
 
     render(){

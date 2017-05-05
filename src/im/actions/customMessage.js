@@ -85,7 +85,7 @@ export const _sendCustomMessage = ({customData,CustomMessage,sendToRemote})=>(di
     const message = new CustomMessage();
     message.customData = customData;
 
-    dispatch(saveMessage(message));
+    !sendToRemote && dispatch(saveMessage(message));
     sendToRemote && dispatch(sendMessage(message));
 };
 

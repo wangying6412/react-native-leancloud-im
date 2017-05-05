@@ -21,6 +21,7 @@ import InputerButton from './InputerButton.js';
 import styles from '../css';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PropTypes from 'prop-types';
+import EmojiPicker from '../plugs/Emoji';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -31,6 +32,12 @@ class Inputer extends React.Component{
         return {
             _saveMessage : PropTypes.func,
             _sendMessage : PropTypes.func,
+            _onImage : PropTypes.func,
+            _onLocation : PropTypes.func,
+
+            _sendTextMessage : PropTypes.func,
+            _buildImageMessage : PropTypes.func,
+            _buildLocationMessage : PropTypes.func,
         };
     }
 
@@ -38,13 +45,19 @@ class Inputer extends React.Component{
         super(props);
 
         this.state = {
+
             inputHeight : 0,
             text : '',
             textFoucs : false,
+
+            currentPad : null,
             footPadHeight : 0,
+
             overLayTop : 0,
             overLayBottom : 50,
-            currentPad : null,
+
+            error : false,
+            errorText : null,
         };
     }
 
@@ -62,21 +75,20 @@ class Inputer extends React.Component{
     }
 
     _onTextChange(text){
-        text;
         //leancloud的列表刷新未读数有BUG，暂时取消暂态消息
         //let typing = this._onOperationMessage();
-        //this._send(typing);
+        //this.props._send(typing);
 
-        /*this.setState({
+        this.setState({
             text,
-        });*/
+        });
     }
 
     _onTextPress(){
-        /*this._toggle('face','hide');
+        this._toggle('face','hide');
         this._toggle('plus','hide').then(()=>{
             this.refs.textMessageInput.focus();
-        });*/
+        });
     }
 
     _onTextFocus(){
@@ -103,7 +115,7 @@ class Inputer extends React.Component{
 
         control==='show' && Keyboard.dismiss();
 
-        const duration = control === 'show' ? 250 : 0;
+        const duration = control === 'show' ? 250 : 50;
 
         let faceHeight = 240 + 30;
         let plusHeight = screenWidth / 2;
@@ -111,14 +123,13 @@ class Inputer extends React.Component{
         const footHeight = current === 'face' ? faceHeight : plusHeight;
         const h = control === 'hide' ? 0 : footHeight;
 
-        //control !== 'hide' && this._toggle(anotherBox,'hide');
         const currentBtn = 'btn' + current.replace(/[a-z]/,w=>w.toUpperCase());
         const otherBtn = current === 'face' ? 'btnPlus' : 'btnFace';
 
         this.refs[currentBtn].setState({
             showKeyBoard : control === 'show'
         });
-        this.refs[otherBtn].setState({
+        control === 'show' && this.refs[otherBtn].setState({
             showKeyBoard : control !== 'show'
         });
 
@@ -146,24 +157,29 @@ class Inputer extends React.Component{
         });
     }
 
-    _onTextMessage(){
-        /*let text = this.state.text;
+    _sendTextMessage(){
+        let text = this.state.text;
 
         if(!text){
-            global.toast('请输入消息再发送');
-            return false;
+            this.setState({
+                errorText : '请输入消息再发送',
+            });
+        }else{
+
+            Keyboard.dismiss();
+            this.refs.textMessageInput.clear();
+            this.setState({
+                text : ''
+            });
+            this._toggle('face','hide');
+
+            this.props._sendTextMessage(text);
         }
-
-        let message = new TextMessage(text);
-
-        message.setNeedReceipt(true);
-        this._send(message);*/
     }
 
     _onFacePick(face){
-        face;
-        /*let text = this.state.text + face;
-        this._onTextChange(text);*/
+        let text = this.state.text + face;
+        this._onTextChange(text);
     }
 
     _onImage(model='launchImageLibrary'){
@@ -266,41 +282,10 @@ class Inputer extends React.Component{
         return message;*/
     }
 
-    _send(msg){
-        msg;
-        /*let m = msg;
-
-        if(m){
-
-            let pushData = false;
-
-            if(m.type <= 0){
-                Keyboard.dismiss();
-                this.refs.textMessageInput.clear();
-                this.setState({
-                    text : ''
-                });
-                this._toggle('face','hide');
-                pushData = `${global.username || '您的朋友'}:${m.getText()}`;
-            }
-
-            m.setAttributes({
-                guid : Mock.Random.guid(),
-                avatar : global.avatar,
-                username : global.username,
-            });
-
-            this.props._saveMessage && this.props._saveMessage(m);
-            this.props._sendMessage && this.props._sendMessage(m,pushData);
-        }else{
-            console.log('未发现消息对象，拒绝发送');
-        }*/
-    }
-
     _cancel(){
-        /*Keyboard.dismiss();
+        Keyboard.dismiss();
         this._toggle('face','hide');
-        this._toggle('plus','hide');*/
+        this._toggle('plus','hide');
     }
 
     _getPlusPad(){
@@ -378,14 +363,14 @@ class Inputer extends React.Component{
         }]}>
             {
 
-                    /*<EmojiPicker
-                        onPick={this._onFacePick.bind(this)}
-                    />*/
+                <EmojiPicker
+                    onPick={this._onFacePick.bind(this)}
+                />
             }
             <View style={[styles.row,styles.im_faceSendBtnWrap]}>
                 <View style={[styles.flex3]} />
                 <TouchableOpacity style={[styles.im_faceSendBtn]}
-                    onPress={this._onTextMessage.bind(this)}
+                    onPress={this._sendTextMessage.bind(this)}
                 >
                     <Text style={[styles.white]}>发送</Text>
                 </TouchableOpacity>
@@ -416,9 +401,10 @@ class Inputer extends React.Component{
                                 height: Math.max(styles.im_inputer_input.height, this.state.inputHeight)
                             }]}
                             autoCorrect={false}
-                            multiline={true}
+                            multiline={false}
                             blurOnSubmit={true}
                             returnKeyType="send"
+                            returnKeyLabel="发送"
                             enablesReturnKeyAutomatically={true}
                             value={this.state.text}
                             onFocus={this._onTextFocus.bind(this)}
@@ -430,7 +416,7 @@ class Inputer extends React.Component{
                                 });
                             }}
                             onChangeText={this._onTextChange.bind(this)}
-                            onSubmitEditing={this._onTextMessage.bind(this)}
+                            onSubmitEditing={this._sendTextMessage.bind(this)}
                             underlineColorAndroid="transparent"     //Android去掉底边
                         />
                         {

@@ -1,0 +1,100 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "react-native-simple-emoji-picker@^0.1.0",
+        "scope": null,
+        "escapedName": "react-native-simple-emoji-picker",
+        "name": "react-native-simple-emoji-picker",
+        "rawSpec": "^0.1.0",
+        "spec": ">=0.1.0 <0.2.0",
+        "type": "range"
+      },
+      "/Users/lihaitang/Documents/jixiang/jixiang_app"
+    ]
+  ],
+  "_cnpm_publish_time": 1476177533982,
+  "_from": "react-native-simple-emoji-picker@>=0.1.0 <0.2.0",
+  "_id": "react-native-simple-emoji-picker@0.1.0",
+  "_inCache": true,
+  "_location": "/react-native-simple-emoji-picker",
+  "_nodeVersion": "5.4.0",
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/react-native-simple-emoji-picker-0.1.0.tgz_1476177533349_0.11969302129000425"
+  },
+  "_npmUser": {
+    "name": "goshakkk",
+    "email": "me@goshakkk.name"
+  },
+  "_npmVersion": "3.8.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "react-native-simple-emoji-picker@^0.1.0",
+    "scope": null,
+    "escapedName": "react-native-simple-emoji-picker",
+    "name": "react-native-simple-emoji-picker",
+    "rawSpec": "^0.1.0",
+    "spec": ">=0.1.0 <0.2.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npm.taobao.org/react-native-simple-emoji-picker/download/react-native-simple-emoji-picker-0.1.0.tgz",
+  "_shasum": "8298eecedaf5344ace7ae06e21352e74bc3716ca",
+  "_shrinkwrap": null,
+  "_spec": "react-native-simple-emoji-picker@^0.1.0",
+  "_where": "/Users/lihaitang/Documents/jixiang/jixiang_app",
+  "author": {
+    "name": "Gosha Arinich"
+  },
+  "bugs": {
+    "url": "https://github.com/goshakkk/react-native-simple-emoji-picker/issues"
+  },
+  "dependencies": {
+    "emoji-datasource": "^2.4.4"
+  },
+  "description": "A simple emoji picker component for React Native",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "8298eecedaf5344ace7ae06e21352e74bc3716ca",
+    "size": 304656,
+    "noattachment": false,
+    "tarball": "http://registry.npm.taobao.org/react-native-simple-emoji-picker/download/react-native-simple-emoji-picker-0.1.0.tgz"
+  },
+  "gitHead": "38c15682ec5fc6ba281d04de18e3ff5caabbac58",
+  "homepage": "https://github.com/goshakkk/react-native-simple-emoji-picker#readme",
+  "keywords": [
+    "React",
+    "React",
+    "Native",
+    "React-Native",
+    "iOS",
+    "Android",
+    "Component",
+    "Emoji",
+    "Keyboard"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "goshakkk",
+      "email": "me@goshakkk.name"
+    }
+  ],
+  "name": "react-native-simple-emoji-picker",
+  "optionalDependencies": {},
+  "publish_time": 1476177533982,
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goshakkk/react-native-simple-emoji-picker.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "version": "0.1.0"
+}

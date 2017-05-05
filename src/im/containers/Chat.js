@@ -15,20 +15,39 @@ import {
     createChat
 } from '../actions';
 
-import Chat from '../components/Chat';
+import UI from '../components/Chat';
+import Event from '../plugs/event';
+
+let currentConversation = null;
+
+const _createChat = (dispatch,ownProps)=>{
+    const { members, conversationId } = ownProps;
+    dispatch(createChat(members,conversationId)).then((conversation)=>{
+        currentConversation = conversation;
+        event.trigger('connected');
+    });
+};
 
 const mapStateToProps = ($state)=>{
     $state;
-    return {};
-};
-
-const mapDispatchToProps = (dispatch)=>{
     return {
-        dispatch,
-        createChat,
+        currentConversation,
     };
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(Chat);
+const mapDispatchToProps = (dispatch,ownProps)=>{
+    return {
+        _createChat : ()=>_createChat(dispatch,ownProps),
+    };
+};
+
+const Chat = connect(mapStateToProps,mapDispatchToProps)(UI);
+
+const event =  new Event(Chat);
+
+export default Chat;
+export {
+    currentConversation
+};
 
 

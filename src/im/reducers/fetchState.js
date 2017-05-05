@@ -34,7 +34,9 @@ export default function fetchState($state=$initialState,action){
          * @memberof module:reducers
          */
         case types.IM_FETCH_STATE:{
-            const apiName = meta;
+
+            const apiName = meta === 'object' ? meta.apiName : meta;
+
             if(error){
                 const errorText = payload.message;
                 const $stateItem = $initialStateItem.merge({

@@ -9,6 +9,8 @@ import {
     LocationMessage,
 } from 'leancloud-realtime-plugin-typed-messages';
 
+import { currentConversation } from '../containers/Chat';
+
 /**
  * actions - saveMessage 保存单条消息
  *
@@ -44,15 +46,18 @@ export const saveMessages = createAction(types.IM_SAVE_MESSAGE,({cid, messages})
  */
 let _formatMessage = (message)=>{
 
+    const cid = currentConversation ? currentConversation.id : null;
     let attr = message.getAttributes() || {};
     let m = {
         id : message.id,
-        cid : message.cid,
+        cid : message.cid || cid,
+        guid : message.getAttributes().guid,
         type : message.type,
         createAt : message.timestamp && message.timestamp.getTime(),
         deliveredAt : message.deliveredAt && message.deliveredAt.getTime(),
         from : message.from,
         status : message.status,
+        errorText : '',
     };
 
     switch(m.status){

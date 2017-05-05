@@ -87,11 +87,13 @@ export const imChating = createAction(types.IM_CHATING);
  *
  * @function module:actions#fetchState
  * @param {(string|error)} state - 请求状态：'fetching','refreshing','done',new Error('xx')
- * @param {string} apiName - api名称，请求哪个接口的状态
+ * @param {(string|Object)} apiName - api名称，请求哪个接口的状态,如果是对象形式请加上属性名：'apiName'
  * @example
  *
  * //正常
  * dispatch(fetchState('refreshing','createIMClient'));
+ * //或者
+ * dispatch(fetchState('refreshing',{ apiName : 'createIMClient' }));
  *
  * //出错
  * dispatch(fetchState(new Error('找不到用户！'),'createIMClient'));

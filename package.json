@@ -8,9 +8,11 @@
     "test": "jest --watch"
   },
   "dependencies": {
+    "emoji-datasource": "^2.4.4",
     "leancloud-realtime": "^3.4.1",
     "leancloud-realtime-plugin-typed-messages": "^1.0.0",
     "leancloud-storage": "^2.1.4",
+    "mockjs": "^1.0.1-beta3",
     "normalizr": "^3.2.2",
     "react": "16.0.0-alpha.6",
     "react-native": "^0.43.2",
