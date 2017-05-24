@@ -43,6 +43,12 @@ const TYPES =  {
     IM_SAVE_MESSAGES :
     'IM_SAVE_MESSAGES',
 
+    /** 保存用户 */
+    IM_SAVE_USER :
+    'IM_SAVE_USER',
+    IM_SAVE_USERS :
+    'IM_SAVE_USERS',
+
     /** 保存conversation迭代器 */
     IM_SAVE_ITERATOR :
     'IM_SAVE_ITERATOR',

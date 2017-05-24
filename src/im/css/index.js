@@ -10,6 +10,7 @@ import {
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 import inputer from './inputer';
+import im from './im';
 
 const { base} = css;
 
@@ -17,6 +18,7 @@ const _style = Object.assign(
     {},
     theme,
     base,
+    im,
     inputer,
     {}
 );

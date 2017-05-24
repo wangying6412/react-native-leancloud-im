@@ -96,7 +96,7 @@ module.exports = {
         "marginRight": "$spacing",
         "backgroundColor": "#00ff00"
     },
-    "im_itemCorner": {
+    "im_itemCorner_left": {
         "borderWidth": "$onePx",
         "borderStyle": "solid",
         "borderColor": "#f1f1f1",
@@ -104,7 +104,12 @@ module.exports = {
         "height": "$spacing*2",
         "marginLeft": 8,
         "borderRadius": 2,
-        "backgroundColor": "#FFF"
+        "backgroundColor": "#FFF",
+        "transform": [
+            {
+                "rotate": "45deg"
+            }
+        ]
     },
     "im_itemCorner_right": {
         "borderWidth": "$onePx",
@@ -114,7 +119,12 @@ module.exports = {
         "height": "$spacing*2",
         "marginLeft": 8,
         "borderRadius": 2,
-        "backgroundColor": "#00ff00"
+        "backgroundColor": "#00ff00",
+        "transform": [
+            {
+                "rotateZ": "45deg"
+            }
+        ]
     },
     "im_itemWrap": {
         "marginBottom": "$spacing",
@@ -142,17 +152,38 @@ module.exports = {
         "height": "$spacing*2",
         "overflow": "hidden",
         "position": "absolute",
-        "left": "-$spacing",
-        "top": "$spacing"
+        "top": "$spacing + 2",
+        "transform": [
+            {
+                "rotateY": "180deg"
+            }
+        ]
+    },
+    "im_itemCornerWrap_left": {
+        "width": "$spacing",
+        "height": "$spacing*2",
+        "overflow": "hidden",
+        "position": "absolute",
+        "top": "$spacing + 2",
+        "transform": [
+            {
+                "rotateY": "180deg"
+            }
+        ],
+        "right": "40 + $spacing"
     },
     "im_itemCornerWrap_right": {
         "width": "$spacing",
         "height": "$spacing*2",
         "overflow": "hidden",
         "position": "absolute",
-        "left": "initial",
-        "top": "$spacing",
-        "right": "-$spacing-1px"
+        "top": "$spacing + 2",
+        "transform": [
+            {
+                "rotateY": "180deg"
+            }
+        ],
+        "left": "41 + $spacing"
     },
     "im_itemTextBox": {
         "paddingTop": "$spacing",
@@ -168,14 +199,12 @@ module.exports = {
         "marginLeft": 2
     },
     "im_itemLocation_image": {
-        "borderRadius": "0 0 6px 6px",
         "width": 210,
         "height": 70
     },
     "im_itemLocation_text": {
         "width": 210,
         "backgroundColor": "#FFF",
-        "borderRadius": "5px 5px 0 0",
         "paddingTop": "$spacing*0.5",
         "paddingBottom": "$spacing*0.5",
         "paddingRight": "$spacing*0.5",
@@ -216,7 +245,6 @@ module.exports = {
     "im_item_time_text": {
         "color": "$gray",
         "fontSize": 12,
-        "backgroundColor": "transparent",
-        "whiteSpace": "nowrap"
+        "backgroundColor": "transparent"
     }
 }

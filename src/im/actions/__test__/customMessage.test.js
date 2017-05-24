@@ -64,7 +64,7 @@ describe('对 actions - customMessage 的测试',()=>{
             })).toThrowError('customData格式不正确，无法发送自定义消息。');
         });
 
-        test('功能测试',()=>{
+        test('功能测试 > 发送到远程',()=>{
 
             dispatch(_sendCustomMessage({
                 customData : {a:123},
@@ -72,9 +72,19 @@ describe('对 actions - customMessage 的测试',()=>{
                 CustomMessage
             }));
 
+            expect(mockSendMessage.mock.calls[0][0].customData).toEqual({a:123});
+        });
+
+        test('功能测试 > 不发送到远程',()=>{
+
+            dispatch(_sendCustomMessage({
+                customData : {a:123},
+                sendToRemote : false,
+                CustomMessage
+            }));
+
             expect(mockSaveMessage).toHaveBeenCalled();
             expect(mockSaveMessage.mock.calls[0][0].customData).toEqual({a:123});
-            expect(mockSendMessage.mock.calls[0][0].customData).toEqual({a:123});
         });
     });
 
@@ -90,3 +100,7 @@ describe('对 actions - customMessage 的测试',()=>{
     });
 
 });
+
+
+
+

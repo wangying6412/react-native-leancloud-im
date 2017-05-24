@@ -8,11 +8,16 @@
  */
 
 import {
+    ListView
+} from 'react-native';
+
+import {
     connect
 } from 'react-redux';
 
 import {
-    createChat
+    createChat,
+    getMessages
 } from '../actions';
 
 import UI from '../components/Chat';
@@ -21,17 +26,37 @@ import Event from '../plugs/event';
 let currentConversation = null;
 
 const _createChat = (dispatch,ownProps)=>{
-    const { members, conversationId } = ownProps;
-    dispatch(createChat(members,conversationId)).then((conversation)=>{
+    const { users, conversationId } = ownProps;
+    dispatch(createChat(users,conversationId)).then((conversation)=>{
         currentConversation = conversation;
         event.trigger('connected');
-    });
+
+        dispatch(getMessages(conversation));
+    }).catch(console.warn);
 };
 
-const mapStateToProps = ($state)=>{
-    $state;
+let dataSource = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2, });
+const mapStateToProps = ($state,ownProps)=>{
+    const $messages = $state.getIn(['entities','messages']);
+    let $conversation = null;
+
+    const ownerId = $state.getIn(['config','ownerId']);
+
+    if(currentConversation){
+        $conversation =  $state.getIn(['entities','conversations',currentConversation.id]);
+        const messagesArray = $conversation && $conversation.get('messages');
+        dataSource = dataSource.cloneWithRows(messagesArray.toJS());
+    }
+
+    const owner = $state.getIn(['entities','users',String(ownerId)]);
+    const { users } = ownProps;
+
     return {
-        currentConversation,
+        $messages,
+        $conversation,
+        dataSource,
+        owner,
+        users,
     };
 };
 

@@ -8,8 +8,8 @@
 
 //=======================
 const propTypes = {
-    name : React.PropTypes.string,
-    size : React.PropTypes.number,
+    name : PropTypes.string,
+    size : PropTypes.number,
 };
 //========================
 
@@ -18,6 +18,7 @@ import {
     View,
     Image,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 import cat from './gif/water2.gif';
 const gifs = {

@@ -3,14 +3,14 @@
  * @version v0.0.1
  */
 
-import React,{
-    PropTypes
-} from 'react';
+import React from 'react';
 import {
     Text,
     View,
     KeyboardAvoidingView,
 } from 'react-native';
+
+import PropTypes from 'prop-types';
 
 import ScrollView from './DuiScrollView';
 import styles from '../css';

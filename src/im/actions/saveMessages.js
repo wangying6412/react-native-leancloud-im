@@ -11,6 +11,8 @@ import {
 
 import { currentConversation } from '../containers/Chat';
 
+import Mock from 'mockjs';
+
 /**
  * actions - saveMessage 保存单条消息
  *
@@ -29,8 +31,9 @@ export const saveMessage = createAction(types.IM_SAVE_MESSAGE,message=>{
  * @param {string} args.cid - conversation的ID
  * @param {Object[]} args.messages - leancloud消息对象数组
  */
-export const saveMessages = createAction(types.IM_SAVE_MESSAGE,({cid, messages})=>{
+export const saveMessages = createAction(types.IM_SAVE_MESSAGES,({cid, messages})=>{
     let _messages = messages.map(message=>_formatMessage(message));
+
     return {
         cid,
         messages : _messages
@@ -51,7 +54,6 @@ let _formatMessage = (message)=>{
     let m = {
         id : message.id,
         cid : message.cid || cid,
-        guid : message.getAttributes().guid,
         type : message.type,
         createAt : message.timestamp && message.timestamp.getTime(),
         deliveredAt : message.deliveredAt && message.deliveredAt.getTime(),
@@ -59,6 +61,16 @@ let _formatMessage = (message)=>{
         status : message.status,
         errorText : '',
     };
+
+    const guid = Mock.Random.guid();
+    if(message.getAttributes()){
+        m.guid = message.getAttributes().guid || guid;
+    }else{
+        message.setAttributes({
+            guid
+        });
+        m.guid = guid;
+    }
 
     switch(m.status){
         case MessageStatus.SENDING : {

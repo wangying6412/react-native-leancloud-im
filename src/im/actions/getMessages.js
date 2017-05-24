@@ -13,13 +13,14 @@ import { createAction } from 'redux-actions';
  */
 export const getMessages = (conversation)=>(dispatch,$getState)=>{
 
-    const { cid } = conversation.id;
+    const cid = conversation.id;
     let iterator = $getState().getIn(['entities','conversation',cid,'iterator']);
 
     // 创建一个迭代器，每次获取 ${limit} 条历史消息
     if(!iterator){
         const limit = $getState().getIn(['config','messagesLimit']);
         iterator = conversation.createMessagesIterator({ limit: limit });
+
         dispatch(saveIterator({cid,iterator}));
     }
 

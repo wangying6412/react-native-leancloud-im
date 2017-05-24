@@ -27,7 +27,14 @@ export default ($state=$initialState,action)=>{
          * @memberof module:reducers
          */
         case types.IM_INIT:
-            return $state.merge(payload);
+            {
+                const obj = { ...payload };
+                const ownerId = obj.owner.id;
+                delete obj.owner;
+                obj.ownerId = ownerId;
+
+                return $state.merge(obj);
+            }
         default:
             return $state;
     }

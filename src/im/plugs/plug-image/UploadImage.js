@@ -117,10 +117,9 @@ const uploadImage = (ops,resolve,reject)=>{
                     Image.prefetch(r.imgURL).then(()=>{console.log('已缓存大图。');});
                 }
 
-
             }).catch((err)=>{
                 console.log(err);
-                global.toast('啊哦，我们的服务器好像出了点问题，您等一下再上传照片吧。');
+                //global.toast('啊哦，我们的服务器好像出了点问题，您等一下再上传照片吧。');
                 reject(err);
             });
         }).catch((err)=>{
@@ -138,11 +137,11 @@ const uploadImage = (ops,resolve,reject)=>{
             if(d.state === 1){
                 upload(obj.imgFile,obj.imgSource);
             }else{
-                global.toast('上传图片失败，您没有上传权限。');
+                //global.toast('上传图片失败，您没有上传权限。');
             }
         }).catch((err)=>{
             console.log(err);
-            global.toast('上传图片失败');
+            //global.toast('上传图片失败');
             reject(err);
         });
     }).catch((err)=>{

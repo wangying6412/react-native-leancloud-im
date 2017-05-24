@@ -26,13 +26,19 @@ describe('对 actions - sendMessage 的测试',()=>{
 
     test('功能测试',()=>{
         const spy = jest.spyOn(actions,'fetchState');
+        const message = {
+            id :1,
+            getAttributes:()=>({}),
+            setAttributes:()=>({}),
+            getText:()=>'hello',
+        };
         return dispatch(sendMessage({
-            message : {id :1},
+            message,
             conversation,
             pushData : {},
         })).then(()=>{
             expect(_send).toHaveBeenCalledTimes(1);
-            expect(_send.mock.calls[0][0]).toEqual({id:1});
+            expect(_send.mock.calls[0][0]).toEqual(message);
             expect(spy).toHaveBeenCalledTimes(2);
         });
     });

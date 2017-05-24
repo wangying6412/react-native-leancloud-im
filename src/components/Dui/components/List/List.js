@@ -32,21 +32,21 @@
 //=======================
 //      继承 dui-scroll-view props
 const propTypes = {
-    url : React.PropTypes.string.isRequired,
-    data : React.PropTypes.object,
-    storage : React.PropTypes.shape({
-        key : React.PropTypes.string.isRequired,
-        id : React.PropTypes.oneOfType([
-            React.PropTypes.number,
-            React.PropTypes.string,
+    url : PropTypes.string.isRequired,
+    data : PropTypes.object,
+    storage : PropTypes.shape({
+        key : PropTypes.string.isRequired,
+        id : PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string,
         ]),
-        expires : React.PropTypes.number,
+        expires : PropTypes.number,
     }).isRequired,
-    renderRow : React.PropTypes.func.isRequired,
+    renderRow : PropTypes.func.isRequired,
 
-    renderEmptyComponent : React.PropTypes.func,
-    renderEndReachedComponent : React.PropTypes.func, //loadingPage
-    renderEndErrorComponent : React.PropTypes.func,
+    renderEmptyComponent : PropTypes.func,
+    renderEndReachedComponent : PropTypes.func, //loadingPage
+    renderEndErrorComponent : PropTypes.func,
 };
 //========================
 
@@ -55,6 +55,7 @@ import {
     ListView,
     Dimensions,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import {
     connect
 } from 'react-redux';

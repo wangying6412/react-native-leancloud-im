@@ -8,7 +8,7 @@ const mockStore = configureStore([thunk]);
 const store = mockStore({});
 const { dispatch } = store;
 
-const appId = 'aaa', appKey = 'bbb', ownerId = 1;
+const appId = 'aaa', appKey = 'bbb', owner = { id : 1 , avatar : 'xxx' , nickname : 'xxxxx'};
 
 /**
  * 对createIMClient的模拟
@@ -32,7 +32,7 @@ const { imInit } = require('../index.js');
 
 describe('对actions.imInit()的测试',()=>{
 
-    const config = { appId, appKey, ownerId, };
+    const config = { appId, appKey, owner, };
 
     test('参数缺失应该抛出错误',()=>{
         expect(imInit({}))
@@ -40,7 +40,11 @@ describe('对actions.imInit()的测试',()=>{
         expect(imInit({appId}))
             .toThrowError('im初始化必须有 Leancloud appKey');
         expect(imInit({appId,appKey}))
-            .toThrowError('im初始化必须要有ownerId');
+            .toThrowError('im初始化必须要有owner对象');
+        expect(imInit({appId,appKey,owner : {id:null}}))
+            .toThrowError('im初始化必须要有owner.id');
+        expect(imInit({appId,appKey,owner : {id:1}}))
+            .toThrowError('im初始化必须要有owner.avatar');
     });
 
     test('actions.imInit() 异步测试',()=>{
@@ -51,7 +55,7 @@ describe('对actions.imInit()的测试',()=>{
             expect(mockCreateIMClient.mock.calls[0][0])
                 .toBe(config.appId);
             expect(mockCreateIMClient.mock.calls[0][1])
-                .toBe(config.ownerId);
+                .toBe(config.owner.id);
         }).catch(console.log);
     });
 

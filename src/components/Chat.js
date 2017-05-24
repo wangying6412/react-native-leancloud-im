@@ -16,7 +16,7 @@ class ChatComponent extends React.Component{
 
     static get propTypes(){
         return {
-            userId : PropTypes.string,
+            user : PropTypes.object,
         };
     }
 
@@ -31,10 +31,10 @@ class ChatComponent extends React.Component{
     }
 
     render(){
-        const userId = this.props.navigation.state.params.userId;
+        const user = this.props.navigation.state.params.user;
 
         return(
-            <Chat members={[userId]} />
+            <Chat users={[user]} />
         );
     }
 }

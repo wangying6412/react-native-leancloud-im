@@ -6,7 +6,7 @@
 import types from '../actions/types';
 import Immutable from 'immutable';
 
-const $initialState = Immutable.Map([]);
+const $initialState = Immutable.fromJS({});
 
 export default ($state=$initialState, action)=>{
 
@@ -19,7 +19,7 @@ export default ($state=$initialState, action)=>{
          *
          * @memberof! module:reducers
          */
-        case types.IM_REGISTER_CUSTOMMESSAGE:{
+        case types.IM_REGISTER_CUSTOM_MESSAGE:{
             const { type, render, instance } = payload;
 
             return $state.set(type,Immutable.fromJS({

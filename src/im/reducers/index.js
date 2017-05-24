@@ -16,6 +16,7 @@ import imStatus from './imStatus';
 
 import conversations from './entities.conversations';
 import messages from './entities.messages';
+import users from './entities.users';
 
 
 //import types from '../actions/types';
@@ -32,6 +33,7 @@ let testReducer = (state=testState)=>state;
 const entities = combineReducers({
     conversations,
     messages,
+    users,
 });
 
 /**

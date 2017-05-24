@@ -16,13 +16,10 @@ import {
     //messageField,
     TextMessage,
 } from 'leancloud-realtime';
-/*import {
-    //FileMessage,
-    ImageMessage,
-    //AudioMessage,
-    //VideoMessage,
-    LocationMessage,
-} from'leancloud-realtime-plugin-typed-messages';*/
+
+import { sendMessage } from '../actions';
+
+import { getCache } from '../cache';
 
 /**
  * 发送文本消息
@@ -30,7 +27,6 @@ import {
  * @param {string} text - 文本
  * @private
  */
-import { sendMessage } from '../actions';
 const _sendTextMessage = (text)=>(dispatch,$getState)=>{
 
     let message = new TextMessage(text);
@@ -59,8 +55,10 @@ const _sendTextMessage = (text)=>(dispatch,$getState)=>{
 
 const mapStateToProps = ()=>{
 
-    return {
+    const plugs = getCache('plugs');
 
+    return {
+        plugs,
     };
 };
 

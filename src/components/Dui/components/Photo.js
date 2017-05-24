@@ -31,7 +31,7 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-import Loading from './Loading.js';
+//import Loading from './Loading.js';
 import Mock from 'mockjs';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -272,7 +272,7 @@ export default class Photo extends React.Component{
                         this._renderProgress()
                     }
                     {
-                        !this.state.showIcon ?
+                        /*!this.state.showIcon ?
                         null
                         :
                         <Loading
@@ -281,7 +281,7 @@ export default class Photo extends React.Component{
                             iconType={this.props.iconType || 'ChasingDots'}
                             iconSize={this.props.iconSize || 30}
                             text={this.state.progressText}
-                        />
+                        />*/
                     }
                     <PhotoViewer
                         ref="PhotoViewer"

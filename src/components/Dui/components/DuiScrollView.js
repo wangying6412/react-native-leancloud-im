@@ -6,36 +6,37 @@
 
 const propTypes = {
 
-    dataSource : React.PropTypes.object,
-    onEndReached : React.PropTypes.func,    //onEndReached(prePage,nextPage)
-    key : React.PropTypes.string,
-    id : React.PropTypes.oneOfType([
-        React.PropTypes.number,
-        React.PropTypes.string,
+    dataSource : PropTypes.object,
+    onEndReached : PropTypes.func,    //onEndReached(prePage,nextPage)
+    key : PropTypes.string,
+    id : PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
     ]),
-    renderEmptyComponent : React.PropTypes.func,
-    renderEndReachedComponent : React.PropTypes.func, //loadingPage
-    renderEndErrorComponent : React.PropTypes.func,
+    renderEmptyComponent : PropTypes.func,
+    renderEndReachedComponent : PropTypes.func, //loadingPage
+    renderEndErrorComponent : PropTypes.func,
 
-    refreshing : React.PropTypes.bool,
-    onRefresh : React.PropTypes.func,
+    refreshing : PropTypes.bool,
+    onRefresh : PropTypes.func,
 
-    wrapStyle : React.PropTypes.oneOfType([
-        React.PropTypes.object,
-        React.PropTypes.array,
+    wrapStyle : PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.array,
     ]),
-    style : React.PropTypes.oneOfType([
-        React.PropTypes.object,
-        React.PropTypes.array,
+    style : PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.array,
     ]),
 
-    delay : React.PropTypes.number,
-    renderInitialComponent : React.PropTypes.func,
-    onInitial : React.PropTypes.func,
+    delay : PropTypes.number,
+    renderInitialComponent : PropTypes.func,
+    onInitial : PropTypes.func,
 
 };
 
 import React from 'react';
+
 import {
     ListView,
     ScrollView,
@@ -43,6 +44,7 @@ import {
     View,
     Animated,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import DuiRefreshControl from './DuiRefreshControl';
 import InitialComponent from './DuiInitialComponent';
 import Immutable from 'immutable';

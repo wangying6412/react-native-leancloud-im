@@ -11,7 +11,11 @@ test('reducer-imInit',()=>{
     const ops = {
         appId : 'aaa',
         appKey : 'bbb',
-        ownerId : '123',
+        owner : {
+            id : '123',
+            avatar : 'xxx',
+            nickname : 'xxx',
+        },
         messagesLimit : 50,
     };
     const action = createAction(types.IM_INIT);
@@ -88,10 +92,20 @@ describe('reducer-fetchState',()=>{
 describe('测试reducer.entities.conversations',()=>{
     const reducer_conversations = require('../entities.conversations.js').default;
     const action = createAction(types.IM_SAVE_CONVERSATION);
+
     expect(reducer_conversations(undefined,action({id:'aa'})).toJS())
-        .toEqual({
+        .toMatchObject({
             aa : {
-                id : 'aa'
+                id : 'aa',
+                members : [],
+                creator : null,
+                lastMessage : null,
+                createdAt : null,
+                updatedAt : null,
+                lastMessageAt : null,
+                unreadMessagesCount : 0,
+                done : false,
+                iterator : null
             }
         });
 });
@@ -99,17 +113,17 @@ describe('测试reducer.entities.conversations',()=>{
 describe('测试reducer.entities.messages',()=>{
     const reducer_messages = require('../entities.messages.js').default;
     const action = createAction(types.IM_SAVE_MESSAGE);
-    expect(reducer_messages(undefined,action({id:'aa'})).toJS())
+    expect(reducer_messages(undefined,action({guid:'aa'})).toJS())
         .toEqual({
             aa : {
-                id : 'aa'
+                guid : 'aa'
             }
         });
 });
 
 describe('测试reducer.customMessages',()=>{
     const customMessages = require('../customMessages.js').default;
-    const action = createAction(types.IM_REGISTER_CUSTOMMESSAGE);
+    const action = createAction(types.IM_REGISTER_CUSTOM_MESSAGE);
 
     expect(customMessages(undefined,action({
         type : 123,

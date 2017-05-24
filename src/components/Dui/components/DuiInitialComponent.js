@@ -7,8 +7,8 @@
  */
 
 const propTypes = {
-    status : React.PropTypes.string.isRequired,
-    onHide : React.PropTypes.func,
+    status : PropTypes.string.isRequired,
+    onHide : PropTypes.func,
 };
 
 import React from 'react';
@@ -16,6 +16,7 @@ import {
     Animated,
     Text,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 import logo from '../img/logo.png';
 

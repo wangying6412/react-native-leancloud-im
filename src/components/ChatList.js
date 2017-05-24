@@ -39,9 +39,15 @@ class ChatList extends React.Component{
 
         const { navigate } = this.props.navigation;
 
+        const user = {
+            id : 2,
+            nickname : '路人甲',
+            avatar : 'https://img6.bdstatic.com/img/image/smallpic/chongwuxiaoouheihe.jpg',
+        };
+
         return(
             <Body refreshing={false} onRefresh={()=>{}}>
-                <ListItem title="hello world!!" onPress={()=>navigate('Chat',{userId:2})} />
+                <ListItem title="hello world!!" onPress={()=>navigate('Chat',{user})} />
             </Body>
         );
     }

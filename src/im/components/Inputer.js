@@ -19,7 +19,6 @@ import {
 
 import InputerButton from './InputerButton.js';
 import styles from '../css';
-import Icon from 'react-native-vector-icons/Ionicons';
 import PropTypes from 'prop-types';
 import EmojiPicker from '../plugs/Emoji';
 
@@ -36,8 +35,6 @@ class Inputer extends React.Component{
             _onLocation : PropTypes.func,
 
             _sendTextMessage : PropTypes.func,
-            _buildImageMessage : PropTypes.func,
-            _buildLocationMessage : PropTypes.func,
         };
     }
 
@@ -182,36 +179,6 @@ class Inputer extends React.Component{
         this._onTextChange(text);
     }
 
-    _onImage(model='launchImageLibrary'){
-        model;
-/*
-        let guid = Mock.Random.guid();
-
-        UploadImage({
-            model : model,
-            url : global.URL.uploadImgCommon,
-            onUpload : ((source,fileURL)=>{
-                source;
-                this._buildImageMessage(fileURL,fileURL,guid).then((msg)=>{
-                    this.props._saveMessage(msg);
-                });
-
-            }).bind(this)
-        }).then((d)=>{
-            let {
-                imgURL,
-                thumb,
-                //fileName,
-            } = d;
-
-            this._buildImageMessage(thumb,imgURL,guid).then((msg)=>{
-                this.props._sendMessage(msg,`${global.username || '您的朋友'}给您发了一张照片`);
-            });
-        }).catch((err)=>{
-            console.log(err);
-        });*/
-    }
-
     /*
             {
                 "addr":"杭州市江干区富春路701号万象城内(庆春东路口)万象城购物中心B1层",
@@ -236,26 +203,6 @@ class Inputer extends React.Component{
                 this.props._saveMessage(message);
                 this.props._sendMessage(message,`${global.username || '您的朋友'}给您发了一个地理位置`);
             }
-        });*/
-    }
-
-    _buildImageMessage(thumb,imgURL,guid){
-        guid;
-        /*let file = AV.File.withURL(Mock.Random.ctitle(), thumb);
-
-        return new Promise((resolve,reject)=>{
-            file.save().then(()=>{
-                let message = new ImageMessage(file);
-                message.setAttributes({
-                    thumb,
-                    imgURL,
-                    guid : guid,
-                });
-                message.setNeedReceipt(true);
-                resolve(message);
-            }).catch((err)=>{
-                reject(err);
-            });
         });*/
     }
 
@@ -289,24 +236,47 @@ class Inputer extends React.Component{
     }
 
     _getPlusPad(){
+
+        const { plugs } = this.props;
+        const size = {
+            minHeight : screenWidth / 4,
+            alignItems : 'stretch',
+        };
+
         return <View style={[styles.im_inputerPlus,{
             height : this.state.currentPad === 'plus' ? this.state.footPadHeight : 0,
             overflow : 'hidden',
         }]}>
-            <View style={[styles.row,{
-                minHeight : screenWidth / 4,
-                alignItems : 'stretch',
-            }]}>
-                <TouchableOpacity style={[styles.im_inputerPlus_item]}
-                    onPress={(()=>{
-                        this._onImage('launchImageLibrary');
-                    }).bind(this)}
-                >
-                    <View>
-                        <View style={[styles.im_inputerPlus_iconWrap,{
-                            width : screenWidth / 6.5,
-                            height : screenWidth / 6.5,
-                        }]}>
+            <View style={[styles.row,{ minHeight : screenWidth / 4, alignItems : 'stretch'}]}>
+                {
+                    plugs.map((plug,index)=>(
+                        <TouchableOpacity style={[styles.im_inputerPlus_item]}
+                            onPress={ ()=>plug.onPress() }
+                            key={ `im_inputer_plug_${ index }` }
+                        >
+                            <View>
+                                <View style={[styles.im_inputerPlus_iconWrap,size]}>
+                                    { plug.icon }
+                                </View>
+                                <View style={[styles.center]}>
+                                    <Text style={[styles.im_inputerPlus_font]}>{ plug.name }</Text>
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                    ))
+                }
+                {
+/*
+                    <TouchableOpacity style={[styles.im_inputerPlus_item]}
+                        onPress={(()=>{
+                            this._onImage('launchImageLibrary');
+                        }).bind(this)}
+                    >
+                        <View>
+                            <View style={[styles.im_inputerPlus_iconWrap,{
+                                width : screenWidth / 6.5,
+                                height : screenWidth / 6.5,
+                            }]}>
                             <Icon style={styles.im_inputerPlus_icon} name="ios-image" />
                         </View>
                         <View style={[styles.center]}>
@@ -314,38 +284,36 @@ class Inputer extends React.Component{
                         </View>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.im_inputerPlus_item]}
-                    onPress={(()=>{
-                        this._onImage('launchCamera');
-                    }).bind(this)}
-                >
-                    <View>
-                        <View style={[styles.im_inputerPlus_iconWrap,{
-                            width : screenWidth / 6.5,
-                            height : screenWidth / 6.5,
-                        }]}>
-                            <Icon style={styles.im_inputerPlus_icon} name="ios-camera" />
+                        <TouchableOpacity style={[styles.im_inputerPlus_item]}
+                            onPress={(()=>{
+                                this._onImage('launchCamera');
+                            }).bind(this)}
+                        >
+                            <View>
+                                <View style={[styles.im_inputerPlus_iconWrap,{
+                                    width : screenWidth / 6.5,
+                                    height : screenWidth / 6.5,
+                                }]}>
+                                <Icon style={styles.im_inputerPlus_icon} name="ios-camera" />
+                            </View>
+                            <View style={[styles.center]}>
+                                <Text style={[styles.im_inputerPlus_font]}>拍照</Text>
+                            </View>
                         </View>
-                        <View style={[styles.center]}>
-                            <Text style={[styles.im_inputerPlus_font]}>拍照</Text>
-                        </View>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity style={[styles.im_inputerPlus_item]}
-                    onPress={this._onLocation.bind(this)}
-                >
-                    <View>
-                        <View style={[styles.im_inputerPlus_iconWrap,{
-                            width : screenWidth / 6.5,
-                            height : screenWidth / 6.5,
-                        }]}>
-                            <Icon style={styles.im_inputerPlus_icon} name="ios-pin" />
-                        </View>
-                        <View style={[styles.center]}>
-                            <Text style={[styles.im_inputerPlus_font]}>位置</Text>
-                        </View>
-                    </View>
-                </TouchableOpacity>
+                    </TouchableOpacity>
+                        <TouchableOpacity style={[styles.im_inputerPlus_item]}
+                            onPress={this._onLocation.bind(this)}
+                        >
+                            <View>
+                                <View style={[styles.im_inputerPlus_iconWrap,size]}>
+                                    <Icon style={styles.im_inputerPlus_icon} name="ios-pin" />
+                                </View>
+                                <View style={[styles.center]}>
+                                    <Text style={[styles.im_inputerPlus_font]}>位置</Text>
+                                </View>
+                            </View>
+                        </TouchableOpacity>*/
+                }
                 <TouchableOpacity style={[styles.im_inputerPlus_item]}>
                 </TouchableOpacity>
             </View>

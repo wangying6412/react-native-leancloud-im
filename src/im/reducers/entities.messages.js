@@ -14,19 +14,23 @@ export default ($state=$initialState, action)=>{
     const { type, payload, meta, error } = action;
 
     switch(type){
+
         case types.IM_SAVE_MESSAGE:{
             const { guid } = payload;
 
             return $state.set(guid,Immutable.fromJS(payload));
         }
+
         case types.IM_SAVE_MESSAGES:{
             let {  messages } = payload;
+
             messages = messages.reduce((obj,message)=>{
                 return Object.assign(obj,{ [message.guid] : message });
             },{});
 
             return $state.merge(Immutable.fromJS(messages));
         }
+
         case types.IM_FETCH_STATE:{
 
             const { apiName, guid } = meta;
@@ -42,6 +46,7 @@ export default ($state=$initialState, action)=>{
                 return $state;
             }
         }
+
         default :
             return $state;
     }

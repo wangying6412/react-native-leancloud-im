@@ -5,9 +5,9 @@
  * @version v0.0.1
  */
 
-import React,{
-    PropTypes
-} from 'react';
+import React from 'react';
+
+import PropTypes from 'prop-types';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 

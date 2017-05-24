@@ -18,12 +18,12 @@ import { createIMClient } from './createIMClient';
  * @param {Object} config - Leancloud的appId和appKey及用户ID
  * @param {string} config.appId - Leancloud的appId
  * @param {string} config.appKey - Leancloud的appKey
- * @param {(string|number)} config.ownerId - 用户的ID
+ * @param {Object} config.owner - 用户的ID
  * @example
  *
- * dispatch(imInit({appId:'xxxx',appKey:'xxxxxx',ownerId:1}));
+ * dispatch(imInit({appId:'xxxx',appKey:'xxxxxx',owner:{ id : 1, nickname : 'xxx', avatar : 'xxxx'}}));
  */
-export const imInit = ({appId,appKey,ownerId})=>(dispatch)=>{
+export const imInit = ({appId,appKey,owner})=>(dispatch)=>{
 
     const imInitAction = createAction(types.IM_INIT);
 
@@ -31,32 +31,39 @@ export const imInit = ({appId,appKey,ownerId})=>(dispatch)=>{
         throw new Error('im初始化必须有 Leancloud appId');
     }else if(!appKey){
         throw new Error('im初始化必须有 Leancloud appKey');
-    }else if(!ownerId){
-        throw new Error('im初始化必须要有ownerId');
-    }else{
-        AV.init({appId,appKey});
-        dispatch(imInitAction({appId,appKey,ownerId}));
+    }else if(!owner){
+        throw new Error('im初始化必须要有owner对象');
+    }else if(owner){
+        if(!owner.id){
+            throw new Error('im初始化必须要有owner.id');
+        }else if(!owner.avatar){
+            throw new Error('im初始化必须要有owner.avatar');
+        }else{
+            AV.init({appId,appKey});
+            dispatch(imInitAction({appId,appKey,owner}));
 
-        /**
-         * 连接到Leancloud
-         */
-        return dispatch(createIMClient(appId,ownerId)).then(({im,realtime})=>{
+            /**
+             * 连接到Leancloud
+             */
+            return dispatch(createIMClient(appId,owner.id)).then(({im,realtime})=>{
 
-            dispatch(saveIm(im));
+                dispatch(saveIm(im));
 
-            //im.on('unreadmessages',_onUnreadmessages);    // 当接收到未读提醒
-            //im.on('receipt',_onReceipt);                  // 当接收到已读回执
-            //im.on('conflict',_onConflict);                // 当在别处登录
+                //im.on('unreadmessages',_onUnreadmessages);    // 当接收到未读提醒
+                //im.on('receipt',_onReceipt);                  // 当接收到已读回执
+                //im.on('conflict',_onConflict);                // 当在别处登录
 
-            //im.on('message',(message,conversation)=>{     //当接收到消息
+                //im.on('message',(message,conversation)=>{     //当接收到消息
                 //_onMessage(message,conversation);
-            //});
+                //});
 
-            realtime.on('disconnect' , ()=>dispatch(imStatus('已与服务器断开连接')));   // 离线
-            realtime.on('retry'      , ()=>dispatch(imStatus('正在连接服务器')));       // 正在重连
-            realtime.on('reconnect'  , ()=>dispatch(imStatus(null)));                   // 已连接
-        });
+                realtime.on('disconnect' , ()=>dispatch(imStatus('已与服务器断开连接')));   // 离线
+                realtime.on('retry'      , ()=>dispatch(imStatus('正在连接服务器')));       // 正在重连
+                realtime.on('reconnect'  , ()=>dispatch(imStatus(null)));                   // 已连接
+            });
+        }
     }
+
 };
 
 /**
@@ -100,19 +107,22 @@ export const imChating = createAction(types.IM_CHATING);
  */
 export const fetchState = createAction(types.IM_FETCH_STATE,null,(payload,meta)=>meta);
 
-
-
 /**
  * 设定出口
  */
 import { saveMessage,saveMessages } from './saveMessages';
+import { saveUser,saveUsers } from './saveUsers.js';
 import { createChat } from './createChat';
 import { sendMessage } from './sendMessage';
+import { getMessages } from './getMessages';
 export {
-    saveMessage,
     createChat,
     sendMessage,
+    saveMessage,
     saveMessages,
+    getMessages,
+    saveUser,
+    saveUsers,
 };
 
 

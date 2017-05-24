@@ -10,7 +10,7 @@ import {
     createStore,
     applyMiddleware,
     compose,
-    bindActionCreators,
+    //bindActionCreators,
 } from 'redux';
 
 import event from './plugs/event';
@@ -31,6 +31,8 @@ import {
 import {
     Provider
 } from 'react-redux';
+
+import { setCache } from './cache.js';
 
 const Event = new event();
 
@@ -60,15 +62,22 @@ persistStore(store,{
 const { dispatch } = store;
 
 /**
- * 设定出口
+ * 初始化
+ *
+ * @param {Object} args - 参数: appId,appKey,插件... 等
  */
-export const init = bindActionCreators(imInit,dispatch);
+export const init = (args)=>{
+    args.plugs && setCache('plugs',args.plugs);
+    args.plugs && delete(args.plugs);
+
+    dispatch(imInit(args));
+};
+
 export const Chat = (props)=><Provider store={store}><ChatComponent {...props} /></Provider>;
 
 const defaults = {};
 export default defaults;
 Event.pack(defaults);
-
 
 
 
